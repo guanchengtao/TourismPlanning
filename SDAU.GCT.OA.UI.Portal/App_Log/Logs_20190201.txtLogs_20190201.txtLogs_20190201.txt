@@ -1,0 +1,116 @@
+
+----------------------header--------------------------
+ 发生时间：[2019-02-01 00:35:46,032]
+ 线程ID：[34]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.IO.IOException: 无法从传输连接中读取数据: 无法访问已释放的对象。
+对象名:“System.Net.Sockets.Socket”。。 ---> System.ObjectDisposedException: 无法访问已释放的对象。
+对象名:“System.Net.Sockets.Socket”。
+   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, SocketError& errorCode)
+   在 System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   在 System.IO.BufferedStream.ReadByte()
+   在 ServiceStack.Redis.RedisNativeClient.ReadLine()
+   在 ServiceStack.Redis.RedisNativeClient.ReadData()
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectData(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.get_Info()
+   在 ServiceStack.Redis.RedisNativeClient.get_ServerVersion()
+   在 ServiceStack.Redis.RedisNativeClient.Connect()
+   在 ServiceStack.Redis.RedisNativeClient.AssertConnectedSocket()
+   在 ServiceStack.Redis.RedisNativeClient.SendCommand(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.SendExpectData(Byte[][] cmdWithBinaryArgs)
+   在 ServiceStack.Redis.RedisNativeClient.GetBytes(String key)
+   在 ServiceStack.Redis.RedisClient.GetValue(String key)
+   在 RedisDAL.RedisWriter.GetString(String key) 位置 D:\MyProject\RedisDAL\RedisWriter.cs:行号 86
+   在 CacheHelper.CacheHelper.GetString(String key) 位置 D:\MyProject\CacheHelper\CacheHelper.cs:行号 82
+   在 SDAU.GCT.OA.UI.Portal.Controllers.PlantInfoController.GetPlant(Int32 id) 位置 D:\MyProject\SDAU.GCT.OA.UI.Portal\Controllers\PlantInfoController.cs:行号 30
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-02-01 01:05:58,245]
+ 线程ID：[20]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.Runtime.Serialization.SerializationException: 程序集“SDAU.GCT.OA.UI.Portal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null”中的类型“<>f__AnonymousType13`3[[SDAU.GCT.OA.Common.Status, SDAU.GCT.OA.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Linq.IQueryable`1[[SDAU.GCT.OA.Model.PlantInfo, SDAU.GCT.OA.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]”未标记为可序列化。
+   在 System.Runtime.Serialization.FormatterServices.InternalGetSerializableMembers(RuntimeType type)
+   在 System.Runtime.Serialization.FormatterServices.<>c__DisplayClass9_0.<GetSerializableMembers>b__0(MemberHolder _)
+   在 System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 System.Runtime.Serialization.FormatterServices.GetSerializableMembers(Type type, StreamingContext context)
+   在 System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitMemberInfo()
+   在 System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitSerialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+   在 System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.Serialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+   在 System.Runtime.Serialization.Formatters.Binary.ObjectWriter.Serialize(Object graph, Header[] inHeaders, __BinaryWriter serWriter, Boolean fCheck)
+   在 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph, Header[] headers, Boolean fCheck)
+   在 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph)
+   在 SDAU.GCT.OA.UI.Portal.Controllers.PlantInfoController.GetPlant(Int32 id) 位置 D:\MyProject\SDAU.GCT.OA.UI.Portal\Controllers\PlantInfoController.cs:行号 51
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-02-01 01:07:47,647]
+ 线程ID：[46]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.Runtime.Serialization.SerializationException: 程序集“SDAU.GCT.OA.UI.Portal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null”中的类型“<>f__AnonymousType13`1[[System.Linq.IQueryable`1[[SDAU.GCT.OA.Model.PlantInfo, SDAU.GCT.OA.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]”未标记为可序列化。
+   在 System.Runtime.Serialization.FormatterServices.InternalGetSerializableMembers(RuntimeType type)
+   在 System.Runtime.Serialization.FormatterServices.<>c__DisplayClass9_0.<GetSerializableMembers>b__0(MemberHolder _)
+   在 System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 System.Runtime.Serialization.FormatterServices.GetSerializableMembers(Type type, StreamingContext context)
+   在 System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitMemberInfo()
+   在 System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitSerialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+   在 System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.Serialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+   在 System.Runtime.Serialization.Formatters.Binary.ObjectWriter.Serialize(Object graph, Header[] inHeaders, __BinaryWriter serWriter, Boolean fCheck)
+   在 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph, Header[] headers, Boolean fCheck)
+   在 System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph)
+   在 SDAU.GCT.OA.UI.Portal.Controllers.PlantInfoController.GetPlant(Int32 id) 位置 D:\MyProject\SDAU.GCT.OA.UI.Portal\Controllers\PlantInfoController.cs:行号 51
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+----------------------footer--------------------------

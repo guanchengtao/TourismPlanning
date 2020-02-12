@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <!--<object name="DbSessionFactory" type="SDAU.GCT.OA.DALFactory.DbSessionFactory,SDAU.GCT.OA.DALFactory"
+      singleton="true">
+  --><!--Spring.Net通过工厂的实例方法来创建对象配置demo--><!--
+  </object>
+  <object name="DbSession"
+          type="SDAU.GCT.OA.DALFactory.DbSession,SDAU.GCT.OA.DALFactory"
+          singleton="false" 
+          factory-method="GetCurrentSession"
+          factory-object="DbSessionFactory" >
+  </object>-->
+
+  <!--Spring.Net通过工厂的一个静态方法来创建对象配置demo type直接配置到工厂类型就可以了-->
+  <object name="DbSession"
+        type="SDAU.GCT.OA.DALFactory.DbSessionFactory,SDAU.GCT.OA.DALFactory"
+        singleton="false"
+        factory-method="GetCurrentSession" >
+  </object>
+
+
+
+
+
+  <object name="ActionInfoDal"
+ type="SDAU.GCT.OA.DAL.ActionInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="LogInfoDal"
+ type="SDAU.GCT.OA.DAL.LogInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="PlantImageDal"
+ type="SDAU.GCT.OA.DAL.PlantImageDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="PlantInfoDal"
+ type="SDAU.GCT.OA.DAL.PlantInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="R_UserInfo_ActionInfoDal"
+ type="SDAU.GCT.OA.DAL.R_UserInfo_ActionInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="RoleInfoDal"
+ type="SDAU.GCT.OA.DAL.RoleInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="UserCommentDal"
+ type="SDAU.GCT.OA.DAL.UserCommentDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="UserInfoDal"
+ type="SDAU.GCT.OA.DAL.UserInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+</objects>

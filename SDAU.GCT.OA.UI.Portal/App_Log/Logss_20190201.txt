@@ -1,0 +1,104 @@
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-02-01 13:54:01,304]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：gggggggggggggg
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-02-01 13:54:37,578]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:45ms,渲染:6ms 发生时间：[2019-02-01 13:54:40,821]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1ms,渲染:0ms 发生时间：[2019-02-01 13:56:42,646]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1606ms,渲染:4ms 发生时间：[2019-02-01 13:56:57,013]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:0ms,渲染:0ms 发生时间：[2019-02-01 13:57:06,503]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:4ms,渲染:0ms 发生时间：[2019-02-01 13:57:14,582]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1ms,渲染:0ms 发生时间：[2019-02-01 13:58:06,985]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:3ms,渲染:2ms 发生时间：[2019-02-01 13:58:10,009]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1ms,渲染:0ms 发生时间：[2019-02-01 13:58:12,515]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1ms,渲染:0ms 发生时间：[2019-02-01 13:58:14,962]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1ms,渲染:0ms 发生时间：[2019-02-01 13:58:17,707]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:4ms,渲染:0ms 发生时间：[2019-02-01 13:58:26,257]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:0ms,渲染:0ms 发生时间：[2019-02-01 13:58:28,061]
+ 线程ID：[51]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:2ms,渲染:0ms
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-02-01 14:08:27,046]
+ 线程ID：[49]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【PlantInfo】-【Getplant】,执行:1526ms,渲染:6ms 发生时间：[2019-02-01 14:09:37,743]
+ 线程ID：[49]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 SDAU.GCT.OA.UI.Portal.Controllers.BaseController.OnActionExecuting(ActionExecutingContext filterContext) 位置 D:\MyProject\SDAU.GCT.OA.UI.Portal\Controllers\BaseController.cs:行号 28
+   在 System.Web.Mvc.Controller.System.Web.Mvc.IActionFilter.OnActionExecuting(ActionExecutingContext filterContext)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.InvokeActionMethodFilterAsynchronouslyRecursive(Int32 filterIndex)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__0(AsyncCallback asyncCallback, Object asyncState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallBeginDelegate(AsyncCallback callback, Object callbackState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__0(AsyncCallback asyncCallback, Object asyncState) 发生时间：[2019-02-01 14:09:38,261]
+ 线程ID：[49]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【UserLogin】-【ShowVcode】,执行:27ms,渲染:0ms 发生时间：[2019-02-01 14:09:38,779]
+ 线程ID：[49]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：【UserLogin】-【ShowVcode】,执行:1ms,渲染:0ms
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------

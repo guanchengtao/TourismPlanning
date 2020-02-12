@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91c6237e29374e4f976b2a1e823a505c" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.ActionInfo" Width="1.5" PointX="7.375" PointY="2.25" />
+        <EntityTypeShape EntityType="Model1.LogInfo" Width="1.5" PointX="9.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.R_UserInfo_ActionInfo" Width="1.5" PointX="4.25" PointY="2.375" />
+        <EntityTypeShape EntityType="Model1.RoleInfo" Width="1.5" PointX="3.875" PointY="5.625" />
+        <EntityTypeShape EntityType="Model1.UserInfo" Width="1.5" PointX="1.25" PointY="2.625" />
+        <AssociationConnector Association="Model1.FK_R_UserInfo_ActionInfoActionInfo" />
+        <AssociationConnector Association="Model1.FK_UserInfoR_UserInfo_ActionInfo" />
+        <AssociationConnector Association="Model1.ActionInfoRoleInfo" />
+        <AssociationConnector Association="Model1.UserInfoRoleInfo" />
+        <EntityTypeShape EntityType="Model1.PlantInfo" Width="1.5" PointX="1.875" PointY="10.875" />
+        <EntityTypeShape EntityType="Model1.PlantImage" Width="1.5" PointX="5.375" PointY="10.375" />
+        <EntityTypeShape EntityType="Model1.UserComment" Width="1.5" PointX="1.125" PointY="8.5" />
+        <AssociationConnector Association="Model1.PlantInfoPlantImage" />
+        <AssociationConnector Association="Model1.PlantInfoUserComment" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

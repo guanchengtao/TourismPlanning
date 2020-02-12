@@ -1,0 +1,117 @@
+
+----------------------header--------------------------
+ 发生时间：[2019-01-07 21:59:17,566]
+ 线程ID：[18]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-07 21:59:17,574]
+ 线程ID：[18]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-07 21:59:17,577]
+ 线程ID：[18]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-07 21:59:17,577]
+ 线程ID：[18]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-07 21:59:17,578]
+ 线程ID：[18]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-07 21:59:17,578]
+ 线程ID：[18]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-01-07 22:32:35,137]
+ 线程ID：[46]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-07 22:32:35,145]
+ 线程ID：[46]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-07 22:32:35,149]
+ 线程ID：[46]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-07 22:32:35,149]
+ 线程ID：[46]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-07 22:32:35,149]
+ 线程ID：[46]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-07 22:32:35,149]
+ 线程ID：[46]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-01-07 22:49:16,932]
+ 线程ID：[12]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-07 22:49:16,940]
+ 线程ID：[12]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-07 22:49:16,943]
+ 线程ID：[12]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-07 22:49:16,943]
+ 线程ID：[12]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-07 22:49:16,943]
+ 线程ID：[12]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-07 22:49:16,944]
+ 线程ID：[12]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。

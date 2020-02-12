@@ -1,0 +1,489 @@
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-01-09 01:03:58,118]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:04:01,102]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:04:03,973]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:04:20,427]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:05:28,646]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:05:30,713]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:07:04,826]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult) 发生时间：[2019-01-09 01:07:18,114]
+ 线程ID：[79]
+ 错误级别：[ERROR]
+ 记录人：[南风知我意]
+ 错误信息：System.ArgumentException: 对于“SDAU.GCT.OA.UI.Portal.Controllers.UserInfoController”中方法“System.Web.Mvc.ActionResult Delete(Int32)”的不可以为 null 的类型“System.Int32”的参数“id”，参数字典包含一个 null 项。可选参数必须为引用类型、可以为 null 的类型或声明为可选参数。
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c.<BeginInvokeSynchronousActionMethod>b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__11_0()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass11_1.<InvokeActionMethodFilterAsynchronouslyRecursive>b__2()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass7_0.<BeginInvokeActionMethodWithFilters>b__1(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-01-09 13:57:42,306]
+ 线程ID：[17]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 13:57:42,316]
+ 线程ID：[17]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 13:57:42,319]
+ 线程ID：[17]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 13:57:42,319]
+ 线程ID：[17]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 13:57:42,319]
+ 线程ID：[17]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 13:57:42,319]
+ 线程ID：[17]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+ 发生时间：[2019-01-09 13:58:37,000]
+ 线程ID：[9]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 13:58:37,000]
+ 线程ID：[9]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 13:58:37,000]
+ 线程ID：[9]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 13:58:37,000]
+ 线程ID：[9]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 13:58:37,000]
+ 线程ID：[9]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 13:58:37,000]
+ 线程ID：[9]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+ 发生时间：[2019-01-09 14:00:27,591]
+ 线程ID：[17]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:00:27,591]
+ 线程ID：[17]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:00:27,591]
+ 线程ID：[17]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:00:27,591]
+ 线程ID：[17]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:00:27,591]
+ 线程ID：[17]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:00:27,591]
+ 线程ID：[17]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+ 发生时间：[2019-01-09 14:06:38,862]
+ 线程ID：[9]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:06:38,863]
+ 线程ID：[9]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:06:38,863]
+ 线程ID：[9]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:06:38,863]
+ 线程ID：[9]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:06:38,863]
+ 线程ID：[9]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:06:38,863]
+ 线程ID：[9]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+ 发生时间：[2019-01-09 14:08:10,431]
+ 线程ID：[6]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:08:10,431]
+ 线程ID：[6]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:08:10,431]
+ 线程ID：[6]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:08:10,431]
+ 线程ID：[6]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:08:10,431]
+ 线程ID：[6]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:08:10,431]
+ 线程ID：[6]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-01-09 14:13:48,735]
+ 线程ID：[9]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:13:48,747]
+ 线程ID：[9]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:13:48,750]
+ 线程ID：[9]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:13:48,750]
+ 线程ID：[9]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:13:48,750]
+ 线程ID：[9]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:13:48,750]
+ 线程ID：[9]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+ 发生时间：[2019-01-09 14:14:40,709]
+ 线程ID：[14]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:14:40,709]
+ 线程ID：[14]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:14:40,709]
+ 线程ID：[14]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:14:40,709]
+ 线程ID：[14]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:14:40,709]
+ 线程ID：[14]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:14:40,709]
+ 线程ID：[14]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+ 发生时间：[2019-01-09 14:16:52,816]
+ 线程ID：[17]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:16:52,816]
+ 线程ID：[17]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:16:52,816]
+ 线程ID：[17]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:16:52,816]
+ 线程ID：[17]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:16:52,816]
+ 线程ID：[17]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:16:52,816]
+ 线程ID：[17]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+ 发生时间：[2019-01-09 14:29:32,183]
+ 线程ID：[6]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：自定义Info级别的信息 发生时间：[2019-01-09 14:29:32,191]
+ 线程ID：[6]
+ 错误级别：[ERROR]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：errorSystem.Exception:  error 信息 。。。
+ 发生时间：[2019-01-09 14:29:32,193]
+ 线程ID：[6]
+ 错误级别：[FATAL]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：fatalSystem.Exception:  fatal 信息 。。。
+ 发生时间：[2019-01-09 14:29:32,193]
+ 线程ID：[6]
+ 错误级别：[INFO ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：infoSystem.Exception:  info 信息 。。。
+ 发生时间：[2019-01-09 14:29:32,194]
+ 线程ID：[6]
+ 错误级别：[DEBUG]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：debugSystem.Exception:  debug 信息 。。。
+ 发生时间：[2019-01-09 14:29:32,194]
+ 线程ID：[6]
+ 错误级别：[WARN ]
+ 记录人：[SDAU.GCT.OA.UI.Portal.Controllers.HomeController]
+ 错误信息：warnSystem.Exception:  warn 信息 。。。
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
