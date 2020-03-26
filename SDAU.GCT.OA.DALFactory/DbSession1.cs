@@ -18,21 +18,9 @@ namespace SDAU.GCT.OA.DALFactory
             }
         }
 	  
-	public ILogInfoDal LogInfoDal { get
+	public IPublicInformationDal PublicInformationDal { get
             {
-                return StaticDalFactory.getLogInfoDal();
-            }
-        }
-	  
-	public IPlantImageDal PlantImageDal { get
-            {
-                return StaticDalFactory.getPlantImageDal();
-            }
-        }
-	  
-	public IPlantInfoDal PlantInfoDal { get
-            {
-                return StaticDalFactory.getPlantInfoDal();
+                return StaticDalFactory.getPublicInformationDal();
             }
         }
 	  

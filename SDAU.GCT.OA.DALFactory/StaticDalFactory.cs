@@ -20,19 +20,9 @@ namespace SDAU.GCT.OA.DALFactory
         return Assembly.Load(assemblyname).CreateInstance(assemblyname+".ActionInfoDal") as IActionInfoDal;
         }
 	  
-		  public static ILogInfoDal getLogInfoDal()
+		  public static IPublicInformationDal getPublicInformationDal()
         {      
-        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".LogInfoDal") as ILogInfoDal;
-        }
-	  
-		  public static IPlantImageDal getPlantImageDal()
-        {      
-        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".PlantImageDal") as IPlantImageDal;
-        }
-	  
-		  public static IPlantInfoDal getPlantInfoDal()
-        {      
-        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".PlantInfoDal") as IPlantInfoDal;
+        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".PublicInformationDal") as IPublicInformationDal;
         }
 	  
 		  public static IR_UserInfo_ActionInfoDal getR_UserInfo_ActionInfoDal()

@@ -28,41 +28,19 @@
           <Property Name="ActionInfo_Id" Type="int" Nullable="false" />
           <Property Name="RoleInfo_Id" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="LogInfo">
+        <EntityType Name="PublicInformation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="Thread" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Level" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Logger" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="4000" Nullable="false" />
-          <Property Name="Exception" Type="nvarchar" MaxLength="2000" />
-        </EntityType>
-        <EntityType Name="PlantImage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Url" Type="nvarchar" MaxLength="1000" Nullable="false" />
-          <Property Name="Remark" Type="nvarchar(max)" />
-          <Property Name="SubTime" Type="datetime" Nullable="false" />
-          <Property Name="PlantInfoId" Type="int" Nullable="false" />
-          <Property Name="DelFlag" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PlantInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PlantName" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PlantDetail" Type="nvarchar" MaxLength="2000" Nullable="false" />
-          <Property Name="JingDu" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="WeiDu" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Xiaoqu" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="SubTime" Type="datetime" Nullable="false" />
-          <Property Name="DelFlag" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Type" Type="int" />
+          <Property Name="SubTime" Type="datetime" />
+          <Property Name="SubUnit" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrowseTime" Type="int" />
+          <Property Name="Author" Type="nvarchar" MaxLength="20" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="R_UserInfo_ActionInfo">
           <Key>
@@ -113,7 +91,7 @@
           <Property Name="RoleInfo_Id" Type="int" Nullable="false" />
           <Property Name="UserInfo_Id" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_ActionInfoRoleInfo_ActionInfoSet">
+        <Association Name="FK_ActionInfoRoleInfo_ActionInfo">
           <End Role="ActionInfo" Type="Self.ActionInfo" Multiplicity="1" />
           <End Role="ActionInfoRoleInfo" Type="Self.ActionInfoRoleInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,30 +112,6 @@
             </Principal>
             <Dependent Role="ActionInfoRoleInfo">
               <PropertyRef Name="RoleInfo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PlantInfoPlantImage">
-          <End Role="PlantInfo" Type="Self.PlantInfo" Multiplicity="1" />
-          <End Role="PlantImage" Type="Self.PlantImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlantInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PlantImage">
-              <PropertyRef Name="PlantInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PlantInfoUserComment">
-          <End Role="PlantInfo" Type="Self.PlantInfo" Multiplicity="1" />
-          <End Role="UserComment" Type="Self.UserComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlantInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserComment">
-              <PropertyRef Name="PlantInfoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,7 +151,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UserInfoRoleInfo_UserInfoSet">
+        <Association Name="FK_UserInfoRoleInfo_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
           <End Role="UserInfoRoleInfo" Type="Self.UserInfoRoleInfo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -212,29 +166,19 @@
         <EntityContainer Name="Model1StoreContainer">
           <EntitySet Name="ActionInfo" EntityType="Self.ActionInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActionInfoRoleInfo" EntityType="Self.ActionInfoRoleInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LogInfo" EntityType="Self.LogInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PlantImage" EntityType="Self.PlantImage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PlantInfo" EntityType="Self.PlantInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicInformation" EntityType="Self.PublicInformation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_UserInfo_ActionInfo" EntityType="Self.R_UserInfo_ActionInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleInfo" EntityType="Self.RoleInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserComment" EntityType="Self.UserComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfoRoleInfo" EntityType="Self.UserInfoRoleInfo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ActionInfoRoleInfo_ActionInfoSet" Association="Self.FK_ActionInfoRoleInfo_ActionInfoSet">
+          <AssociationSet Name="FK_ActionInfoRoleInfo_ActionInfo" Association="Self.FK_ActionInfoRoleInfo_ActionInfo">
             <End Role="ActionInfo" EntitySet="ActionInfo" />
             <End Role="ActionInfoRoleInfo" EntitySet="ActionInfoRoleInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_ActionInfoRoleInfo_RoleInfo" Association="Self.FK_ActionInfoRoleInfo_RoleInfo">
             <End Role="RoleInfo" EntitySet="RoleInfo" />
             <End Role="ActionInfoRoleInfo" EntitySet="ActionInfoRoleInfo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PlantInfoPlantImage" Association="Self.FK_PlantInfoPlantImage">
-            <End Role="PlantInfo" EntitySet="PlantInfo" />
-            <End Role="PlantImage" EntitySet="PlantImage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PlantInfoUserComment" Association="Self.FK_PlantInfoUserComment">
-            <End Role="PlantInfo" EntitySet="PlantInfo" />
-            <End Role="UserComment" EntitySet="UserComment" />
           </AssociationSet>
           <AssociationSet Name="FK_R_UserInfo_ActionInfoActionInfo" Association="Self.FK_R_UserInfo_ActionInfoActionInfo">
             <End Role="ActionInfo" EntitySet="ActionInfo" />
@@ -248,7 +192,7 @@
             <End Role="RoleInfo" EntitySet="RoleInfo" />
             <End Role="UserInfoRoleInfo" EntitySet="UserInfoRoleInfo" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserInfoRoleInfo_UserInfoSet" Association="Self.FK_UserInfoRoleInfo_UserInfoSet">
+          <AssociationSet Name="FK_UserInfoRoleInfo_UserInfo" Association="Self.FK_UserInfoRoleInfo_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="UserInfoRoleInfo" EntitySet="UserInfoRoleInfo" />
           </AssociationSet>
@@ -257,11 +201,12 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Model1Container1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActionInfo" EntityType="Model1.ActionInfo" />
-          <EntitySet Name="LogInfo" EntityType="Model1.LogInfo" />
+          <EntitySet Name="PublicInformation" EntityType="Model1.PublicInformation" />
           <EntitySet Name="R_UserInfo_ActionInfo" EntityType="Model1.R_UserInfo_ActionInfo" />
           <EntitySet Name="RoleInfo" EntityType="Model1.RoleInfo" />
+          <EntitySet Name="UserComment" EntityType="Model1.UserComment" />
           <EntitySet Name="UserInfo" EntityType="Model1.UserInfo" />
           <AssociationSet Name="FK_R_UserInfo_ActionInfoActionInfo" Association="Model1.FK_R_UserInfo_ActionInfoActionInfo">
             <End Role="ActionInfo" EntitySet="ActionInfo" />
@@ -278,17 +223,6 @@
           <AssociationSet Name="UserInfoRoleInfo" Association="Model1.UserInfoRoleInfo">
             <End Role="RoleInfo" EntitySet="RoleInfo" />
             <End Role="UserInfo" EntitySet="UserInfo" />
-          </AssociationSet>
-          <EntitySet Name="PlantInfo" EntityType="Model1.PlantInfo" />
-          <EntitySet Name="PlantImage" EntityType="Model1.PlantImage" />
-          <EntitySet Name="UserComment" EntityType="Model1.UserComment" />
-          <AssociationSet Name="PlantInfoPlantImage" Association="Model1.PlantInfoPlantImage">
-            <End Role="PlantInfo" EntitySet="PlantInfo" />
-            <End Role="PlantImage" EntitySet="PlantImage" />
-          </AssociationSet>
-          <AssociationSet Name="PlantInfoUserComment" Association="Model1.PlantInfoUserComment">
-            <End Role="PlantInfo" EntitySet="PlantInfo" />
-            <End Role="UserComment" EntitySet="UserComment" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ActionInfo">
@@ -308,17 +242,19 @@
           <NavigationProperty Name="R_UserInfo_ActionInfo" Relationship="Model1.FK_R_UserInfo_ActionInfoActionInfo" FromRole="ActionInfo" ToRole="R_UserInfo_ActionInfo" />
           <NavigationProperty Name="RoleInfo" Relationship="Model1.ActionInfoRoleInfo" FromRole="ActionInfo" ToRole="RoleInfo" />
         </EntityType>
-        <EntityType Name="LogInfo">
+        <EntityType Name="PublicInformation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" Nullable="true" />
+          <Property Name="SubTime" Type="DateTime" Precision="3" />
+          <Property Name="SubUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrowseTime" Type="Int32" Nullable="true" />
+          <Property Name="Author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="R_UserInfo_ActionInfo">
           <Key>
@@ -343,6 +279,16 @@
           <Property Name="DelFlag" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ActionInfo" Relationship="Model1.ActionInfoRoleInfo" FromRole="RoleInfo" ToRole="ActionInfo" />
           <NavigationProperty Name="UserInfo" Relationship="Model1.UserInfoRoleInfo" FromRole="RoleInfo" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PlantInfoId" Type="Int32" Nullable="false" />
+          <Property Name="DelFlag" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -389,192 +335,109 @@
           <End Type="Model1.RoleInfo" Role="RoleInfo" Multiplicity="*" />
           <End Type="Model1.UserInfo" Role="UserInfo" Multiplicity="*" />
         </Association>
-        <EntityType Name="PlantInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlantName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="PlantDetail" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
-          <Property Name="JingDu" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="WeiDu" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Name="Xiaoqu" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PlantImage" Relationship="Model1.PlantInfoPlantImage" FromRole="PlantInfo" ToRole="PlantImage" />
-          <NavigationProperty Name="UserComment" Relationship="Model1.PlantInfoUserComment" FromRole="PlantInfo" ToRole="UserComment" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PlantImage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Url" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
-          <Property Name="Remark" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PlantInfo" Relationship="Model1.PlantInfoPlantImage" FromRole="PlantImage" ToRole="PlantInfo" />
-          <Property Name="PlantInfoId" Type="Int32" Nullable="false" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserComment">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Content" Type="String" Nullable="false" MaxLength="300" Unicode="true" FixedLength="false" />
-          <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="PlantInfo" Relationship="Model1.PlantInfoUserComment" FromRole="UserComment" ToRole="PlantInfo" />
-          <Property Name="PlantInfoId" Type="Int32" Nullable="false" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="PlantInfoPlantImage">
-          <End Type="Model1.PlantInfo" Role="PlantInfo" Multiplicity="1" />
-          <End Type="Model1.PlantImage" Role="PlantImage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlantInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PlantImage">
-              <PropertyRef Name="PlantInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PlantInfoUserComment">
-          <End Type="Model1.PlantInfo" Role="PlantInfo" Multiplicity="1" />
-          <End Type="Model1.UserComment" Role="UserComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlantInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UserComment">
-              <PropertyRef Name="PlantInfoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
-    <EntitySetMapping Name="ActionInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.ActionInfo)">
-        <MappingFragment StoreEntitySet="ActionInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Subtime" ColumnName="Subtime" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="HttpMethod" ColumnName="HttpMethod" />
-          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
-          <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
-          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
-          <ScalarProperty Name="Sort" ColumnName="Sort" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LogInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.LogInfo)">
-        <MappingFragment StoreEntitySet="LogInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Thread" ColumnName="Thread" />
-          <ScalarProperty Name="Level" ColumnName="Level" />
-          <ScalarProperty Name="Logger" ColumnName="Logger" />
-          <ScalarProperty Name="Message" ColumnName="Message" />
-          <ScalarProperty Name="Exception" ColumnName="Exception" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="R_UserInfo_ActionInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.R_UserInfo_ActionInfo)">
-        <MappingFragment StoreEntitySet="R_UserInfo_ActionInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="HasPermission" ColumnName="HasPermission" />
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-          <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
-          <ScalarProperty Name="ActionInfoId" ColumnName="ActionInfoId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RoleInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.RoleInfo)">
-        <MappingFragment StoreEntitySet="RoleInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.UserInfo)">
-        <MappingFragment StoreEntitySet="UserInfo">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PlantInfo">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.PlantInfo)">
-        <MappingFragment StoreEntitySet="PlantInfo">
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container1" StorageEntityContainer="Model1StoreContainer">
+          <EntitySetMapping Name="ActionInfo">
+            <EntityTypeMapping TypeName="Model1.ActionInfo">
+              <MappingFragment StoreEntitySet="ActionInfo">
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+                <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="HttpMethod" ColumnName="HttpMethod" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Subtime" ColumnName="Subtime" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PlantName" ColumnName="PlantName" />
-          <ScalarProperty Name="PlantDetail" ColumnName="PlantDetail" />
-          <ScalarProperty Name="JingDu" ColumnName="JingDu" />
-          <ScalarProperty Name="WeiDu" ColumnName="WeiDu" />
-          <ScalarProperty Name="Xiaoqu" ColumnName="Xiaoqu" />
-          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PlantImage">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.PlantImage)">
-        <MappingFragment StoreEntitySet="PlantImage">
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicInformation">
+            <EntityTypeMapping TypeName="Model1.PublicInformation">
+              <MappingFragment StoreEntitySet="PublicInformation">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="BrowseTime" ColumnName="BrowseTime" />
+                <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
-          <ScalarProperty Name="PlantInfoId" ColumnName="PlantInfoId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserComment">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.UserComment)">
-        <MappingFragment StoreEntitySet="UserComment">
-          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="R_UserInfo_ActionInfo">
+            <EntityTypeMapping TypeName="Model1.R_UserInfo_ActionInfo">
+              <MappingFragment StoreEntitySet="R_UserInfo_ActionInfo">
+                <ScalarProperty Name="ActionInfoId" ColumnName="ActionInfoId" />
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="HasPermission" ColumnName="HasPermission" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
-          <ScalarProperty Name="PlantInfoId" ColumnName="PlantInfoId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="ActionInfoRoleInfo" TypeName="Model1.ActionInfoRoleInfo" StoreEntitySet="ActionInfoRoleInfo">
-      <EndProperty Name="ActionInfo">
-        <ScalarProperty Name="Id" ColumnName="ActionInfo_Id" />
-      </EndProperty>
-      <EndProperty Name="RoleInfo">
-        <ScalarProperty Name="Id" ColumnName="RoleInfo_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="UserInfoRoleInfo" TypeName="Model1.UserInfoRoleInfo" StoreEntitySet="UserInfoRoleInfo">
-      <EndProperty Name="RoleInfo">
-        <ScalarProperty Name="Id" ColumnName="RoleInfo_Id" />
-      </EndProperty>
-      <EndProperty Name="UserInfo">
-        <ScalarProperty Name="Id" ColumnName="UserInfo_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleInfo">
+            <EntityTypeMapping TypeName="Model1.RoleInfo">
+              <MappingFragment StoreEntitySet="RoleInfo">
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserComment">
+            <EntityTypeMapping TypeName="Model1.UserComment">
+              <MappingFragment StoreEntitySet="UserComment">
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="PlantInfoId" ColumnName="PlantInfoId" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="Model1.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ActionInfoRoleInfo" TypeName="Model1.ActionInfoRoleInfo" StoreEntitySet="ActionInfoRoleInfo">
+            <EndProperty Name="RoleInfo">
+              <ScalarProperty Name="Id" ColumnName="RoleInfo_Id" />
+            </EndProperty>
+            <EndProperty Name="ActionInfo">
+              <ScalarProperty Name="Id" ColumnName="ActionInfo_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserInfoRoleInfo" TypeName="Model1.UserInfoRoleInfo" StoreEntitySet="UserInfoRoleInfo">
+            <EndProperty Name="UserInfo">
+              <ScalarProperty Name="Id" ColumnName="UserInfo_Id" />
+            </EndProperty>
+            <EndProperty Name="RoleInfo">
+              <ScalarProperty Name="Id" ColumnName="RoleInfo_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">

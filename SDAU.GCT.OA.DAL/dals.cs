@@ -15,15 +15,7 @@ namespace SDAU.GCT.OA.DAL
 	 {
 	 }
 	
-	 public partial class LogInfoDal : BaseDal<LogInfo>, ILogInfoDal
-	 {
-	 }
-	
-	 public partial class PlantImageDal : BaseDal<PlantImage>, IPlantImageDal
-	 {
-	 }
-	
-	 public partial class PlantInfoDal : BaseDal<PlantInfo>, IPlantInfoDal
+	 public partial class PublicInformationDal : BaseDal<PublicInformation>, IPublicInformationDal
 	 {
 	 }
 	

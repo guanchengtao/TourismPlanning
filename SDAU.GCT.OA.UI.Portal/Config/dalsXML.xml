@@ -2,9 +2,9 @@
 <objects xmlns="http://www.springframework.net">
 
   <!--<object name="DbSessionFactory" type="SDAU.GCT.OA.DALFactory.DbSessionFactory,SDAU.GCT.OA.DALFactory"
-      singleton="true">
-  --><!--Spring.Net通过工厂的实例方法来创建对象配置demo--><!--
-  </object>
+      singleton="true">-->
+  <!--Spring.Net通过工厂的实例方法来创建对象配置demo-->
+  <!--</object>
   <object name="DbSession"
           type="SDAU.GCT.OA.DALFactory.DbSession,SDAU.GCT.OA.DALFactory"
           singleton="false" 
@@ -22,27 +22,14 @@
 
 
 
-
   <object name="ActionInfoDal"
  type="SDAU.GCT.OA.DAL.ActionInfoDal,SDAU.GCT.OA.DAL"
  singleton="false">
   </object>
 
 
-  <object name="LogInfoDal"
- type="SDAU.GCT.OA.DAL.LogInfoDal,SDAU.GCT.OA.DAL"
- singleton="false">
-  </object>
-
-
-  <object name="PlantImageDal"
- type="SDAU.GCT.OA.DAL.PlantImageDal,SDAU.GCT.OA.DAL"
- singleton="false">
-  </object>
-
-
-  <object name="PlantInfoDal"
- type="SDAU.GCT.OA.DAL.PlantInfoDal,SDAU.GCT.OA.DAL"
+  <object name="PublicInformationDal"
+ type="SDAU.GCT.OA.DAL.PublicInformationDal,SDAU.GCT.OA.DAL"
  singleton="false">
   </object>
 

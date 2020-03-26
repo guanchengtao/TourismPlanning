@@ -13,10 +13,10 @@ namespace SDAU.GCT.OA.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class Model1Container1 : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public Model1Container1()
+            : base("name=Model1Container1")
         {
         }
     
@@ -26,12 +26,10 @@ namespace SDAU.GCT.OA.Model
         }
     
         public virtual DbSet<ActionInfo> ActionInfo { get; set; }
-        public virtual DbSet<LogInfo> LogInfo { get; set; }
+        public virtual DbSet<PublicInformation> PublicInformation { get; set; }
         public virtual DbSet<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
         public virtual DbSet<RoleInfo> RoleInfo { get; set; }
-        public virtual DbSet<UserInfo> UserInfo { get; set; }
-        public virtual DbSet<PlantInfo> PlantInfo { get; set; }
-        public virtual DbSet<PlantImage> PlantImage { get; set; }
         public virtual DbSet<UserComment> UserComment { get; set; }
+        public virtual DbSet<UserInfo> UserInfo { get; set; }
     }
 }

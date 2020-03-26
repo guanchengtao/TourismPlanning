@@ -28,20 +28,8 @@
   </object>
 	
 
-	   <object name="LogInfoDal"
-    type="SDAU.GCT.OA.DAL.LogInfoDal,SDAU.GCT.OA.DAL"
-    singleton="false">
-  </object>
-	
-
-	   <object name="PlantImageDal"
-    type="SDAU.GCT.OA.DAL.PlantImageDal,SDAU.GCT.OA.DAL"
-    singleton="false">
-  </object>
-	
-
-	   <object name="PlantInfoDal"
-    type="SDAU.GCT.OA.DAL.PlantInfoDal,SDAU.GCT.OA.DAL"
+	   <object name="PublicInformationDal"
+    type="SDAU.GCT.OA.DAL.PublicInformationDal,SDAU.GCT.OA.DAL"
     singleton="false">
   </object>
 	

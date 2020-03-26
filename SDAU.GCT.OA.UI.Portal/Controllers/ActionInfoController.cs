@@ -22,7 +22,7 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         {
             var data = ActionInfoService.GetEntities(u => u.DelFlag == 1);
             int count = data.Count();
-            var jsondata = new { Status.code, count, data };
+            var jsondata = new { Status.success, count, data };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
 
@@ -124,13 +124,13 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             var jsondata = new { allroles, existroles, Status.code };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
-        [HttpPost]
-        public ActionResult SetRole(int id, List<int> rolesId)
-        {
-            bool flag = ActionInfoService.SetRole(id, rolesId);
-            var jsondata = new { id, Status.code, flag };
-            return Json(jsondata, JsonRequestBehavior.AllowGet);
-        }
+       // [HttpPost]
+        //public ActionResult SetRole(int id, List<int> rolesId)
+        //{
+        //    bool flag = ActionInfoService.SetRole(id, rolesId);
+        //    var jsondata = new { id, Status.code, flag };
+        //    return Json(jsondata, JsonRequestBehavior.AllowGet);
+        //}
 
     }
 }

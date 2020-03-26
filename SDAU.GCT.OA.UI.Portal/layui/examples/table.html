@@ -16,12 +16,13 @@ body{padding: 5px; /*overflow-y: scroll;*/}
 <body>
 
 <script type="text/html" id="toolbarDemo">
-  <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-    <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
-    <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
-    <button class="layui-btn layui-btn-sm" lay-event="reload">重载</button>
-  </div>
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        <button class="layui-btn layui-btn-sm" lay-event="reload">重载</button>
+    </div>
 </script>
 
 <table id="test" lay-filter="test"></table>
@@ -57,7 +58,7 @@ body{padding: 5px; /*overflow-y: scroll;*/}
 
 <table id="test2" lay-filter="test2"></table>
 
-<div style="display: none1;">
+<div style="display: none;">
   <table class="layui-table1" lay-data="{width:800, height: 300, url:'json/table/demo2.json', page: true, limit: 6}">
     <thead>
       <tr>
@@ -241,14 +242,21 @@ layui.use('table', function(){
   table.on('toolbar(test)', function(obj){
     var checkStatus = table.checkStatus(obj.config.id);
     switch(obj.event){
-      case 'add':
-        layer.msg('添加');
+        case 'add':
+            layer.open({
+                type: 2,
+                title: '采集设备添加',
+                maxmin: true,
+                area: ['620px', '630px'],
+                shadeClose: false, //点击遮罩关闭
+                content: 'form.html',
+            });
       break;
       case 'update':
         layer.msg('编辑');
       break;
       case 'delete':
-        layer.msg('删除');
+       
       break;
       case 'getCheckData':
         var data = checkStatus.data;

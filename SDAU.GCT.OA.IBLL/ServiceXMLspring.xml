@@ -8,21 +8,9 @@
   </object>
 	
 
-	  <object name="LogInfoService" type="SDAU.GCT.OA.BLL.LogInfoService,SDAU.GCT.OA.BLL" singleton="false" >
+	  <object name="PublicInformationService" type="SDAU.GCT.OA.BLL.PublicInformationService,SDAU.GCT.OA.BLL" singleton="false" >
     <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="LogInfoDal" />
-  </object>
-	
-
-	  <object name="PlantImageService" type="SDAU.GCT.OA.BLL.PlantImageService,SDAU.GCT.OA.BLL" singleton="false" >
-    <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="PlantImageDal" />
-  </object>
-	
-
-	  <object name="PlantInfoService" type="SDAU.GCT.OA.BLL.PlantInfoService,SDAU.GCT.OA.BLL" singleton="false" >
-    <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="PlantInfoDal" />
+    <property name="CurrentDal" ref="PublicInformationDal" />
   </object>
 	
 

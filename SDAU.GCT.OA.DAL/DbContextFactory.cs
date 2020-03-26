@@ -18,7 +18,7 @@ namespace SDAU.GCT.OA.DAL
             if (!(CallContext.GetData("DbContext") is DbContext db))
             {
                 //上下文也可以任意切换
-                db = new Model1Container();
+                db = new Model1Container1();
                 CallContext.SetData("DbContext", db);
             }
             return db;

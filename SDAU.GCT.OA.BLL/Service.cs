@@ -1,4 +1,4 @@
-﻿
+﻿ 
 using SDAU.GCT.OA.DAL;
 using SDAU.GCT.OA.DALFactory;
 using SDAU.GCT.OA.IBLL;
@@ -21,44 +21,13 @@ namespace SDAU.GCT.OA.BLL
         {
             CurrentDal =DbSession.ActionInfoDal;
         }
-        public bool SetRole(int userId, List<int> roleInfoList)
-        {
-            var action = DbSession.ActionInfoDal.GetEntities(u => u.Id == userId).FirstOrDefault();
-            action.RoleInfo.Clear();//全部删除。
-
-            var allRoles = DbSession.RoleInfoDal.GetEntities(r => roleInfoList.Contains(r.Id));
-            foreach (var roleInfo in allRoles)
-            {
-                action.RoleInfo.Add(roleInfo);//加最新的角色。
-            }
-            DbSession.Savechanges();
-            return true;
-
-
-        }
-    }
-	
-	  public partial class LogInfoService : BaseService<LogInfo>, ILogInfoService
-    {
-	  public override void GetCurrentDal()
-        {
-            CurrentDal =DbSession.LogInfoDal;
-        }
 		}
 	
-	  public partial class PlantImageService : BaseService<PlantImage>, IPlantImageService
+	  public partial class PublicInformationService : BaseService<PublicInformation>, IPublicInformationService
     {
 	  public override void GetCurrentDal()
         {
-            CurrentDal =DbSession.PlantImageDal;
-        }
-		}
-	
-	  public partial class PlantInfoService : BaseService<PlantInfo>, IPlantInfoService
-    {
-	  public override void GetCurrentDal()
-        {
-            CurrentDal =DbSession.PlantInfoDal;
+            CurrentDal =DbSession.PublicInformationDal;
         }
 		}
 	
@@ -92,20 +61,5 @@ namespace SDAU.GCT.OA.BLL
         {
             CurrentDal =DbSession.UserInfoDal;
         }
-        public bool SetRole(int userId, List<int> roleInfoList)
-        {
-            var action = DbSession.ActionInfoDal.GetEntities(u => u.Id == userId).FirstOrDefault();
-            action.RoleInfo.Clear();//全部删除。
-
-            var allRoles = DbSession.RoleInfoDal.GetEntities(r => roleInfoList.Contains(r.Id));
-            foreach (var roleInfo in allRoles)
-            {
-                action.RoleInfo.Add(roleInfo);//加最新的角色。
-            }
-            DbSession.Savechanges();
-            return true;
-
-
-        }
-    }
+		}
 }

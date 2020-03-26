@@ -212,6 +212,7 @@
     <Content Include="layui\dist\font\iconfont.ttf" />
     <Content Include="layui\dist\font\iconfont.woff" />
     <Content Include="layui\dist\font\iconfont.woff2" />
+    <Content Include="layui\examples\addInfo.html" />
     <Content Include="layui\examples\admin.html" />
     <Content Include="layui\examples\all.html" />
     <Content Include="layui\examples\button.html" />
@@ -224,6 +225,7 @@
     <Content Include="layui\examples\extends\mod2.js" />
     <Content Include="layui\examples\extends\temp.js" />
     <Content Include="layui\examples\flow.html" />
+    <Content Include="layui\examples\form - 复制.html" />
     <Content Include="layui\examples\form.html" />
     <Content Include="layui\examples\js\child\test.js" />
     <Content Include="layui\examples\js\index.js" />
@@ -505,8 +507,6 @@
     <Compile Include="Controllers\ActionInfoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PlantImageController.cs" />
-    <Compile Include="Controllers\PlantInfoController.cs" />
     <Compile Include="Controllers\RoleInfoController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />

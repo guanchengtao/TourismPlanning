@@ -19,6 +19,7 @@
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
             <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
             <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
             <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
@@ -67,11 +68,11 @@
             //渲染
             window.ins1 = table.render({
                 elem: '#test'
-                , height: 400
+                , height: 600
                 //,width: 600
                 , title: '用户数据表'
-                , url: 'http://love.i1314i.com/json/table/demo1.json'
-                //,size: 'lg'
+                , url: '../../UserInfo/GetPubicInformation'
+               // ,size: 'lg'
                 , page: {
 
                 }
@@ -79,7 +80,7 @@
                 , autoSort: false
                 //,loading: false
                 , totalRow: true
-                , limit: 30
+                , limit: 10
                 , toolbar: '#toolbarDemo'
                 , defaultToolbar: ['filter', 'exports', 'print', {
                     title: '帮助'
@@ -88,13 +89,13 @@
                 }]
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
-                    , { field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
-                    , { field: 'username', title: '标题', width: 120, edit: 'text', templet: '#usernameTpl' }
-                    , { field: 'city', title: '发布人', width: 120, templet: '#cityTpl1' }
-                    , { field: 'sign', title: '发布单位', width: 120 }
-                    , { field: 'ip', title: '类型', width: 120 }
-                    , { field: 'ip', title: '内容' }
-                    , { field: 'joinTime', title: '发布时间', width: 120 }
+                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
+                    , { field: 'Author', title: '标题', width: 120 }
+                    , { field: 'Title', title: '发布人', width: 120 }
+                    , { field: 'Content', title: '发布单位', width: 120 }
+                    , { field: 'Type', title: '类型', width: 120 }
+                    , { field: 'SubUnit', title: '内容' ,width: 120 }
+                    , { field: 'SubTime', title: '发布时间', width: 320 }
                     , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
                 ]]
                 /*
@@ -118,8 +119,15 @@
                 var checkStatus = table.checkStatus(obj.config.id);
                 switch (obj.event) {
                     case 'add':
-                        layer.msg('添加');
-                        break;
+            layer.open({
+                type: 2,
+                title: '采集设备添加',
+                maxmin: true,
+                area: ['620px', '630px'],
+                shadeClose: false, //点击遮罩关闭
+                content: 'form.html',
+            });
+      break;
                     case 'update':
                         layer.msg('编辑');
                         break;
@@ -224,6 +232,27 @@
                 //console.log(obj)
                 if (obj.event === 'del') {
                     layer.confirm('真的删除行么', function (index) {
+                         $.ajax({
+                    url: '../../UserInfo/DeletePublicInfo',
+                    type: 'POST',
+                    dataType: 'json',
+                             data: {
+                                 Id: obj.data.Id
+                    },
+                    success: function (msg) {
+                        var returnCode=msg.code;
+                        if(returnCode==200){
+                            layer.closeAll('loading');
+                            layer.load(2);
+                            layer.msg("删除成功", {icon: 6});
+                            setTimeout(function(){
+                                window.parent.location.reload();//修改成功后刷新父界面
+                            }, 1000);
+                               //加载层-风格
+
+                        }
+                    }
+                })
                         obj.del();
                         layer.close(index);
                     });

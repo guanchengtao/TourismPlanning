@@ -12,14 +12,16 @@ namespace SDAU.GCT.OA.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class LogInfo
+    public partial class PublicInformation
     {
         public int Id { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Thread { get; set; }
-        public string Level { get; set; }
-        public string Logger { get; set; }
-        public string Message { get; set; }
-        public string Exception { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public int Type { get; set; }
+        public DateTime SubTime { get; set; }
+        public string SubUnit { get; set; }
+        public int BrowseTime { get; set; }
+        public string Author { get; set; }
+        public string Remark { get; set; }
     }
 }

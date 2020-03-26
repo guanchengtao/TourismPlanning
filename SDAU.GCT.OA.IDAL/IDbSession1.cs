@@ -13,13 +13,7 @@ public partial interface IDbSession
       IActionInfoDal ActionInfoDal { get; }
 	
 	
-      ILogInfoDal LogInfoDal { get; }
-	
-	
-      IPlantImageDal PlantImageDal { get; }
-	
-	
-      IPlantInfoDal PlantInfoDal { get; }
+      IPublicInformationDal PublicInformationDal { get; }
 	
 	
       IR_UserInfo_ActionInfoDal R_UserInfo_ActionInfoDal { get; }

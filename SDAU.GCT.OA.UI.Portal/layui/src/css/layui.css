@@ -980,7 +980,7 @@ body .layui-table-tips .layui-layer-content{background: none; padding: 0; box-sh
 .layui-nav .layui-nav-child dd.layui-this a{background-color: #5FB878; color: #fff;}
 .layui-nav-child dd.layui-this:after{display: none;}
 
-/* 垂直导航菜单 */.layui-nav-tree{width: 200px; padding: 0;}
+/* 垂直导航菜单 */.layui-nav-tree{width: 200px; padding: 0;margin-top:1px;}
 .layui-nav-tree .layui-nav-item{display: block; width: 100%; line-height: 45px;}
 .layui-nav-tree .layui-nav-item a{position: relative; height: 45px; line-height: 45px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
 .layui-nav-tree .layui-nav-item a:hover{background-color: #4E5465;}

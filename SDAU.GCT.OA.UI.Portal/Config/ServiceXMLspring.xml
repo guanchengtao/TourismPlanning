@@ -7,25 +7,6 @@
     <property name="CurrentDal" ref="ActionInfoDal" />
   </object>
 
-
-  <object name="LogInfoService" type="SDAU.GCT.OA.BLL.LogInfoService,SDAU.GCT.OA.BLL" singleton="false" >
-    <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="LogInfoDal" />
-  </object>
-
-
-  <object name="PlantImageService" type="SDAU.GCT.OA.BLL.PlantImageService,SDAU.GCT.OA.BLL" singleton="false" >
-    <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="PlantImageDal" />
-  </object>
-
-
-  <object name="PlantInfoService" type="SDAU.GCT.OA.BLL.PlantInfoService,SDAU.GCT.OA.BLL" singleton="false" >
-    <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="PlantInfoDal" />
-  </object>
-
-
   <object name="R_UserInfo_ActionInfoService" type="SDAU.GCT.OA.BLL.R_UserInfo_ActionInfoService,SDAU.GCT.OA.BLL" singleton="false" >
     <property name="DbSession" ref="DbSession" />
     <property name="CurrentDal" ref="R_UserInfo_ActionInfoDal" />
@@ -48,5 +29,11 @@
     <property name="DbSession" ref="DbSession" />
     <property name="CurrentDal" ref="UserInfoDal" />
   </object>
+
+  <object name="PublicInformationService" type="SDAU.GCT.OA.BLL.PublicInformationService,SDAU.GCT.OA.BLL" singleton="false" >
+    <property name="DbSession" ref="DbSession" />
+    <property name="CurrentDal" ref="PublicInformationDal" />
+  </object>
+  
 </objects>
 

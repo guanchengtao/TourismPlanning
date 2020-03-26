@@ -13,15 +13,7 @@ namespace SDAU.GCT.OA.IDAL
     {  
 	}   
 	
-	public partial interface ILogInfoDal : IBaseDal<LogInfo>
-    {  
-	}   
-	
-	public partial interface IPlantImageDal : IBaseDal<PlantImage>
-    {  
-	}   
-	
-	public partial interface IPlantInfoDal : IBaseDal<PlantInfo>
+	public partial interface IPublicInformationDal : IBaseDal<PublicInformation>
     {  
 	}   
 	

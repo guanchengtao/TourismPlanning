@@ -11,20 +11,10 @@ namespace SDAU.GCT.OA.IBLL
 	
 	 public partial interface IActionInfoService:IBaseService<ActionInfo>
     {
-        bool SetRole(int id, List<int> roleInfoList);
-    }
-	
-	 public partial interface ILogInfoService:IBaseService<LogInfo>
-    {
 
     }
 	
-	 public partial interface IPlantImageService:IBaseService<PlantImage>
-    {
-
-    }
-	
-	 public partial interface IPlantInfoService:IBaseService<PlantInfo>
+	 public partial interface IPublicInformationService:IBaseService<PublicInformation>
     {
 
     }
@@ -46,6 +36,6 @@ namespace SDAU.GCT.OA.IBLL
 	
 	 public partial interface IUserInfoService:IBaseService<UserInfo>
     {
-        bool SetRole(int id, List<int> roleInfoList);
+
     }
 }

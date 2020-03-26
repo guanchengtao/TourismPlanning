@@ -19,7 +19,5 @@ namespace SDAU.GCT.OA.Model
         public System.DateTime SubTime { get; set; }
         public int PlantInfoId { get; set; }
         public int DelFlag { get; set; }
-    
-        public virtual PlantInfo PlantInfo { get; set; }
     }
 }
