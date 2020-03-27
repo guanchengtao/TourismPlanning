@@ -18,10 +18,11 @@ namespace SDAU.GCT.OA.Model
         public string Title { get; set; }
         public string Content { get; set; }
         public int Type { get; set; }
-        public DateTime SubTime { get; set; }
+        public Nullable<System.DateTime> SubTime { get; set; }
         public string SubUnit { get; set; }
         public int BrowseTime { get; set; }
         public string Author { get; set; }
         public string Remark { get; set; }
+        public int DelFlag { get; set; }
     }
 }

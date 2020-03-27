@@ -535,7 +535,7 @@ hr, .layui-timeline-item:before{background-color: #e6e6e6;}
 .layui-btn+.layui-btn{margin-left: 10px;}
 
 /* 按钮容器 */
-.layui-btn-container{font-size: 0;}
+.layui-btn-container{font-size: 14px;}
 .layui-btn-container .layui-btn{margin-right: 10px; margin-bottom: 10px;}
 .layui-btn-container .layui-btn+.layui-btn{margin-left: 0;}
 .layui-table .layui-btn-container .layui-btn{margin-bottom: 9px;}

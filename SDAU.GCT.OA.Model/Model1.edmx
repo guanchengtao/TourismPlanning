@@ -41,6 +41,7 @@
           <Property Name="BrowseTime" Type="int" />
           <Property Name="Author" Type="nvarchar" MaxLength="20" />
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="DelFlag" Type="int" />
         </EntityType>
         <EntityType Name="R_UserInfo_ActionInfo">
           <Key>
@@ -249,12 +250,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="Int32" Nullable="true" />
+          <Property Name="Type" Type="Int32" />
           <Property Name="SubTime" Type="DateTime" Precision="3" />
           <Property Name="SubUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BrowseTime" Type="Int32" Nullable="true" />
+          <Property Name="BrowseTime" Type="Int32" />
           <Property Name="Author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" />
         </EntityType>
         <EntityType Name="R_UserInfo_ActionInfo">
           <Key>
@@ -335,7 +337,7 @@
           <End Type="Model1.RoleInfo" Role="RoleInfo" Multiplicity="*" />
           <End Type="Model1.UserInfo" Role="UserInfo" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -362,6 +364,7 @@
           <EntitySetMapping Name="PublicInformation">
             <EntityTypeMapping TypeName="Model1.PublicInformation">
               <MappingFragment StoreEntitySet="PublicInformation">
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Author" ColumnName="Author" />
                 <ScalarProperty Name="BrowseTime" ColumnName="BrowseTime" />

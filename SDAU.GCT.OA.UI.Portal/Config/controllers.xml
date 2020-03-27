@@ -28,6 +28,10 @@
   <object type="SDAU.GCT.OA.UI.Portal.Controllers.UserLoginController,SDAU.GCT.OA.UI.Portal" singleton="false" >
     <property name="UserInfoService" ref="UserInfoService" />
   </object>
+  
+  <object type="SDAU.GCT.OA.UI.Portal.Controllers.PublicInformationController,SDAU.GCT.OA.UI.Portal" singleton="false" >
+    <property name="PublicInformationService" ref="PublicInformationService" />
+  </object>
 
 
 </objects>

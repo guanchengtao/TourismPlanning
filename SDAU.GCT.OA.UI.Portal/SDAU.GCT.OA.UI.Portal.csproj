@@ -208,6 +208,7 @@
     <Content Include="adminlogin\fonts\iconfont.eot" />
     <Content Include="adminlogin\fonts\iconfont.ttf" />
     <Content Include="adminlogin\fonts\iconfont.woff" />
+    <Content Include="layui\Client\PublicInformationEditForm.html" />
     <Content Include="layui\dist\font\iconfont.eot" />
     <Content Include="layui\dist\font\iconfont.ttf" />
     <Content Include="layui\dist\font\iconfont.woff" />
@@ -226,7 +227,7 @@
     <Content Include="layui\examples\extends\temp.js" />
     <Content Include="layui\examples\flow.html" />
     <Content Include="layui\examples\form - 复制.html" />
-    <Content Include="layui\examples\form.html" />
+    <Content Include="layui\Client\PublicInformationAddForm.html" />
     <Content Include="layui\examples\js\child\test.js" />
     <Content Include="layui\examples\js\index.js" />
     <Content Include="layui\examples\laydate.html" />
@@ -238,7 +239,7 @@
     <Content Include="layui\examples\responsive.html" />
     <Content Include="layui\examples\slider.html" />
     <Content Include="layui\examples\table.html" />
-    <Content Include="layui\examples\table2.html" />
+    <Content Include="layui\Client\PublicInformation.html" />
     <Content Include="layui\examples\table3.html" />
     <Content Include="layui\examples\transfer.html" />
     <Content Include="layui\examples\tree.html" />
@@ -508,6 +509,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoleInfoController.cs" />
+    <Compile Include="Controllers\PublicInformationController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Global.asax.cs">

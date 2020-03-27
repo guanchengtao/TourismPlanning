@@ -54,10 +54,9 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         [HttpGet]
         public ActionResult GetPubicInformation(int page, int limit)
         {
-            var dataObj = PublicInformationService.GetEntities(u => true);
-            var data = dataObj
-                .OrderBy(x => x.Id)
-                .Take(limit * page).Skip(limit * (page - 1));//进行分页;
+            var dataObj = PublicInformationService.GetEntities(u => u.DelFlag == 1);
+            var data = dataObj.OrderByDescending(x => x.SubTime)
+            .Take(limit * page).Skip(limit * (page - 1));//进行分页
             var result = new List<PublicInformationDTO>();
             foreach (var item in data)
             {
@@ -84,6 +83,44 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult GetPubicInformationById(int Id)
+        {
+            var info = new PublicInformationDTO();
+            var dataObjs = PublicInformationService.GetEntities(u => u.Id == Id && u.DelFlag == 1);
+            if(dataObjs != null &&dataObjs.Count() > 0)
+            {
+                var dataObj = dataObjs.FirstOrDefault();
+                info.Id = dataObj.Id;
+                info.Title = dataObj.Title;
+                info.Content = dataObj.Content;
+                info.SubTime = TimeFormatter.TimeFormat(dataObj.SubTime.ToString());
+                info.SubUnit = dataObj.SubUnit;
+                info.Author = dataObj.Author;
+                info.BrowseTime = dataObj.BrowseTime;
+                info.Remark = dataObj.Remark;
+                info.Type = GetInfoType(dataObj.Type);
+                var jsondata = new
+                {
+                    code = Status.success,
+                    count = 1,
+                    data = info
+                };
+                return Json(jsondata, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new
+                {
+                    code = Status.error,
+                    count = 0,
+                    data = info
+                }, JsonRequestBehavior.AllowGet);
+            }
+          
+        }
+
         public string GetInfoType(int type)
         {
             string result = string.Empty;
@@ -142,6 +179,7 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddPublicInfo(PublicInformationDTO publicInfomationdto)
         {
             var publicInformation = new PublicInformation();
@@ -152,9 +190,33 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             publicInformation.Author = publicInfomationdto.Author;
             publicInformation.SubTime = DateTime.Now;
             publicInformation.Remark = string.Empty;
+            //string content = Server.HtmlEncode(form["content"]);
+            publicInformation.DelFlag = 1;
             if (ModelState.IsValid)
             {
                 PublicInformationService.Add(publicInformation);
+            }
+            var jsondata = new { Status.code };
+            return Json(jsondata, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult EditPublicInfo(PublicInformationDTO publicInfomationdto)
+        {
+            var publicInformation = PublicInformationService.GetEntities(x => x.Id ==
+            publicInfomationdto.Id && x.DelFlag == 1).FirstOrDefault() ;
+            publicInformation.Title = publicInfomationdto.Title;
+            publicInformation.Type = Int32.Parse(publicInfomationdto.Type);
+            publicInformation.Content = publicInfomationdto.Content;
+            publicInformation.SubUnit = publicInfomationdto.SubUnit;
+            publicInformation.Author = publicInfomationdto.Author;
+            publicInformation.Remark = string.Empty;
+            //string content = Server.HtmlEncode(form["content"]);
+            if (ModelState.IsValid)
+            {
+                PublicInformationService.Update(publicInformation);
             }
             var jsondata = new { Status.code };
             return Json(jsondata, JsonRequestBehavior.AllowGet);

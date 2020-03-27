@@ -131,7 +131,8 @@ CREATE TABLE [dbo].[PublicInformation] (
     [SubUnit] nvarchar(50)  NULL,
     [BrowseTime] int  NULL,
     [Author] nvarchar(20)  NULL,
-    [Remark] nvarchar(500)  NULL
+    [Remark] nvarchar(500)  NULL,
+    [DelFlag] int  NULL
 );
 GO
 
