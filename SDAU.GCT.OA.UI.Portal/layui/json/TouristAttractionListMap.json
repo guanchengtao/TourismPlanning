@@ -1,0 +1,67 @@
+﻿{
+    "msg": "",
+    "code": 0,
+    "count": 6,
+    "data": [
+      {
+        "Id": 6,
+        "Name": "森罗殿",
+        "Location": "平原县",
+        "EyeCount": 20,
+        "SubTime": "2020/03/10 15:08:22",
+        "Longitude": "116.328535",
+        "Latitude": "37.144268",
+        "Image": ""
+      },
+      {
+        "Id": 5,
+        "Name": "龙门石刻",
+        "Location": "城东南角",
+        "EyeCount": 33,
+        "SubTime": "2020/03/10 15:03:17",
+        "Longitude": "116.461057",
+        "Latitude": "37.127359",
+        "Image": ""
+      },
+      {
+        "Id": 5,
+        "Name": "千佛塔",
+        "Location": "平原城北2公里处",
+        "EyeCount": 50,
+        "SubTime": "2020/03/10 10:09:00",
+        "Longitude": "116.443891",
+        "Latitude": "37.205980",
+        "Image": ""
+      },
+      {
+        "Id": 3,
+        "Name": "三国文化广场",
+        "Location": "平原县",
+        "EyeCount": 80,
+        "SubTime": "2020/03/07 09:12:16",
+        "Longitude": "116.358509",
+        "Latitude": "37.176925",
+        "Image": ""
+      },
+      {
+        "Id": 2,
+        "Name": "康熙探花花园",
+        "Location": "平原县",
+        "EyeCount": 88,
+        "SubTime": "2020/03/07 08:03:10",
+        "Longitude": "116.301069",
+        "Latitude": "37.141607",
+        "Image": ""
+      },
+      {
+        "Id": 1,
+        "Name": "小康村",
+        "Location": "平原县",
+        "EyeCount": 102,
+        "SubTime": "2020/03/05 13:14:26",
+        "Longitude": "116.305875",
+        "Latitude": "37.160490",
+        "Image": ""
+      }
+    ]
+}

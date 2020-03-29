@@ -1,4 +1,5 @@
 ﻿using CacheHelper;
+using SDAU.GCT.OA.Common;
 using SDAU.GCT.OA.IBLL;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,7 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         public ActionResult ShowVcode()
         {
             Common.ValidateCode validateCode = new Common.ValidateCode();
-                string Codestr = validateCode.CreateValidateCode(4);
-            //   string Codestr = "1111";
-
+            string Codestr = validateCode.CreateValidateCode(4);
             //把验证码写到Session里面
             Session["VCode"] = Codestr;
             byte[] img = validateCode.CreateValidateGraphic(Codestr);
@@ -45,12 +44,13 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             #endregion
             string name = Request["username"].ToString();
             string pwd = Request["userpwd"].ToString();
-            var userInfo =
-                 UserInfoService.GetEntities(u => u.UserName == name && u.UserPwd == pwd && u.DelFlag == 1)
-                 .FirstOrDefault();
+            string password = MD5Helper.GenerateMD5($"{name}{pwd}");
+            var userInfo = 
+                 UserInfoService.GetEntities(u => u.UserName == name && u.UserPwd == password && u.DelFlag == 1)
+.FirstOrDefault();
             if (userInfo == null)
             {
-                var data = new{code=500 };
+                var data = new{ msg = "账号或密码错误",code=500 };
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
             else

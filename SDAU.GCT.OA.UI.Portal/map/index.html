@@ -1,0 +1,352 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>王打卦镇旅游规划展示与监管系统</title>
+    <script src="jsAPI/jquery/jquery-3.3.1.min.js"></script>
+    <link href="css/index.css" rel="stylesheet" type="text/css">
+    <link href="jsAPI/newmap.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="jsAPI/NewMap.js"></script>
+    <script type="text/javascript" src="jsAPI/NExtWMTSLayer.js"></script>
+    <script type="text/javascript" src="jsAPI/map.js"></script>
+    <link href="css/gkxxview.css" rel="stylesheet" />
+    <link href="css/lyghview.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            $("#comment").val("");
+            $("#btnSub").click(function () {
+                var comm = $("#comment").val();
+                if (comm.length == 0) {
+                    alert("评论不能为空！！！");
+                    return;
+                }
+
+                else {
+                    var iid = $("#DeleteFlag").val();
+                    $.post("../Admin/ashx/AddComment.ashx", { comment: comm, id: iid }, function (data) {
+                        if (data == "ok") {
+                            $("#comment").val("");
+                            //重新调用分页函数
+                            paginationNick({
+                                paginationBox: 'pagination-nick',//分页容器--必填
+                                mainBox: 'main-box-nick',//内容盒子--必填
+                                numBtnBox: 'num-box-nick',//数字按钮盒子-- 必填
+                                btnBox: 'btn-box-nick',//按钮盒子 --必填
+                                ipt: 'page-ipt-nick',//input class-- 必填
+                                goBtn: 'go-btn-nick',//go btn class --必填
+                                currentBtn: 'active-nick'//当前按钮class name --必填
+                            });
+
+                        }
+                        else {
+                            alert("评论失败！！！");
+                        }
+                    })
+                }
+
+            });
+        })
+        function FullSrceen() {
+            $("#topDiv").css("display", "none");
+            $("#toolDiv").css("display", "none");
+            $("#map-canvas").css("top", "0px").css("height", "100%");
+            $("#esc").css("display", "block");
+        }
+        function EscFullSrceen() {
+            $("#topDiv").css("display", "block");
+            $("#toolDiv").css("display", "block");
+            $("#map-canvas").css("top", "32px").css("height", "82%");
+            $("#esc").css("display", "none");
+        }
+
+    </script>
+</head>
+<body style="position: absolute; height:100%; width:100%; zoom: 1;overflow:hidden" oncontextmenu="return false;">
+    <input type="hidden" name="name" value="" id="DeleteFlag" />
+    <input type="button" id="esc" name="name" value="退出全屏" style="display:none" onclick="EscFullSrceen()" />
+    <div id="topDiv">
+        <div id="D_Top" class="DIVtop">
+            <div id="D_left">
+                <div id="D_logo">
+                    <img src="jsAPI/images/logo3.png" onclick="gotoHomePage()" />
+                </div>
+            </div>
+            <div id="D_right"></div>
+            <div style="clear:both;"></div>
+        </div>
+
+        <div id="D_menu" class="TopSpan">
+            <ul id="nav">
+                <li id="line" class="line"></li>
+                <li onclick="hdjllist()">
+                    <div id="d_yy"></div>
+                    <a>互动交流</a>
+                </li>
+                <li id="line" class="line"></li>
+                <li onclick="lyghlist()">
+                    <div id="d_zy"></div>
+                    <a>旅游规划</a>
+                </li>
+                <li id="line" class="line"></li>
+                <li>
+                    <div id="d_zt"></div>
+                    <a>旅游景点</a>
+                </li>
+                <li id="line" class="line"></li>
+                <li onclick="gkxxlist()">
+                    <div id="d_map"></div>
+                    <a class="now">旅游信息</a>
+                </li>
+                <li id="line" class="line"></li>
+                <li onclick="index()">
+                    <div></div>
+                    <a>网站首页</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="toolDiv" class="transparent_toolbar">
+        <ul style="margin:3px 0">
+            <li id="btnExtent" class="btnToolbar" style="margin-right: 20px;">
+                <span class="btnToolbar-cont" onclick="FullSrceen()">
+                    <span class="btnToolbar-img" style="background-position: -128px 0;"></span>全屏
+                </span>
+            </li>
+           
+            <li id="vec_img">
+                <div id="vec_" title="地图" class="active"> 地 图</div>
+                <div id="img_" title="影像"> 影 像</div>
+            </li>
+        </ul>
+    </div>
+    <div id="map-canvas" style="top:32px; height: 82%; -webkit-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;"></div>
+    <div id="bottomlist">
+        <div id="closeBottomList">
+            <img id="bottomlistClosebtn" src="images/close.png" onclick="closebottomlist()" />
+        </div>
+        <div id="bottomtable">
+            <table class="table">
+                <caption>
+                    <h1 style="font-size:16px">
+                        旅游信息
+                    </h1>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>
+                            标题
+                        </th>
+                        <th>
+                            类型
+                        </th>
+                        <th>
+                            发布时间
+                        </th>
+                        <th>
+                            发布人
+                        </th>
+                        <th>
+                            查看
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="gkxxbody"></tbody>
+            </table>
+
+            <div class="pagination-nick" style="height:390px; float:right;margin:10px 200px 0 0 "></div>
+            <script src="jsAPI/gkxx_page.js"></script>
+        </div>
+    </div>
+    <!--旅游规划信息表-->
+    <div id="leftlist">
+        <div id="closeleftList">
+            <img id="leftlistClosebtn" src="images/close.png" onclick="closeleftlist()" />
+        </div>
+        <div id="lefttable">
+            <table class="table">
+                <caption>
+                    <h1 style="font-size:16px">
+                        旅游规划信息表
+                    </h1>
+                </caption>
+                <thead>
+                    <tr>
+                        <th>
+                            编号
+                        </th>
+                        <th>
+                            规划项目名称
+                        </th>
+                        <th>
+                            规划时间
+                        </th>
+                        <th>
+                            规划单位
+                        </th>
+                        <th>
+                            负责人
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="lvghbody">
+
+                </tbody>
+
+            </table>
+            <div class="pagination-nick1" style="height:390px; float:right;margin:10px 200px 0 0 "></div>
+            <script src="jsAPI/lygh_page.js"></script>
+        </div>
+    </div>
+
+    <!--公开信息详情页-->
+    <div id="centerlist">
+        <div id="closecenterlist">
+            <img id="centerlistClosebtn" src="images/close.png" onclick="closecenterlist()" />
+        </div>
+        <div id="centertable">
+            <div id="content">
+
+                <div id="title">
+                    <span id="Infotitle"></span>
+                    <br />
+                    <div id="titlesplit"></div>
+                </div>
+                <div id="author">
+                    <span id="">作者</span>:<span id="zuozhe"></span>&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;<span id="">类型</span>:<span id="LeiXing"></span>
+                    &nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp; <span>发布时间</span>:<span id="fabushijian"></span>
+                </div>
+
+                <div id="mainneirong">
+                    <div id="neirong">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--旅游规划详情页-->
+    <div id="centerlist2">
+
+        <div id="closecenterList2">
+            <img id="centerlistClosebtn2" src="images/close.png" onclick="closecenterlist2()" />
+        </div>
+        <div id="lefttable">
+            <table style="height: 262px; width: 700px">
+                <caption>
+                    <h1 style="font-size:16px">
+                        旅游规划信息表
+                    </h1>
+                </caption>
+                <tr>
+
+                    <td class="auto-style4">项目编号</td>
+                    <td class="info_input" id="GHXMBianHao"></td>
+                    <td class="auto-style4">项目名称</td>
+                    <td class="info_input" id="GHXMMingCheng"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">负责人</td>
+                    <td class="info_input" id="FuZeRen"></td>
+                    <td class="auto-style4">规划单位</td>
+                    <td class="info_input" id="GuiHuaDanWei"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">规划时间</td>
+                    <td class="info_input" id="GuiHuaShiJian"></td>
+                    <td class="auto-style4">规划年限</td>
+                    <td class="info_input" id="GuiHuaNianXian"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style4">规划范围</td>
+                    <td class="info_input" id="GuiHuaFanWei"></td>
+                    <td class="auto-style4">规划面积</td>
+                    <td class="info_input" id="GuiHuaMianJi"></td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">规划目标</td>
+                    <td colspan="3">
+                        <textarea readonly="readonly" id="GuiHuaMuBiao" cols="20" rows="4" style="height:90px;width:600px;background-color:white;cursor:text"></textarea>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style6">规划任务</td>
+                    <td colspan="3">
+                        <textarea readonly="readonly" id="GuiHuaRenWu" cols="20" rows="2" style="height:90px;width:600px;background-color:white;"></textarea>
+
+                    </td>
+                </tr>
+                <tr style="height:170px">
+                    <td class="auto-style5">规划项目介绍</td>
+                    <td colspan="3">
+                        <textarea readonly="readonly" id="GHXMJieShao" cols="200" rows="20" style="height:170px;width:600px;background-color:white;cursor:text"></textarea>
+                    </td>
+                </tr>
+
+            </table>
+            <div id="guihautudiv"></div>
+        </div>
+    </div>
+
+    <!--规划图-->
+    <div id="centerlist3">
+        <div id="closecenterList3">
+            <img id="centerlistClosebtn3" src="images/close.png" onclick="closecenterlist3()" />
+        </div>
+        <div id="guihuatu" style="height:550px;width:750px; overflow:scroll; margin:35px 0 0 30px"></div>
+    </div>
+
+
+    <!--景点介绍-->
+    <div id="centerlist4">
+        <div id="closecenterList4">
+            <span style="margin:0 700px 0 0;color:blue">景点介绍</span>
+            <img id="centerlistClosebtn4" src="images/close.png" onclick="closecenterlist4()" />
+        </div>
+        <div id="jingdianxinxi">
+            <div id="jinddianjieshao" style="width:740px;
+    margin:50px 0 0 30px;
+    height: 540px;
+    overflow: scroll;"></div>
+        </div>
+    </div>
+
+    <!--互动交流-->
+    <div id="hudongjiaoliu">
+        <div id="closehudongjiaoliu">
+
+            <img id="hudongjiaoliuClosebtn4" src="images/close.png" onclick="closehudongjiaoliu()" />
+        </div>
+        <div style="width: 500px;
+    height: 600px;
+    margin:38px 0 0 10px;
+    overflow-y:scroll">
+            <textarea placeholder="请在此留言..." style="font-size:medium;max-height:300px;max-width:482px;min-height:78px;min-width:372px" id="comment" name="" rows="5" cols="55"></textarea>
+            <input type="button" name="btnSub" id="btnSub" value="提交" style="margin:3px 10px 0 0;float:right;width:100px;font-size:large;color:blue" />
+            <span style="float:left;margin:2px 0 0 2px">注：您的留言将以匿名的方式发表！</span>
+            <span style="float:left;margin:22px 0 0 -193px;font-size:large;color:black">留言区:</span>
+            <div id="commentList" style="margin:50px 0 0 0">
+            </div>
+            <div class="pagination-nick" style="height:390px; float:right;margin:10px 20px 0 0 "></div>
+            <script src="jsAPI/comment_page.js"></script>
+        </div>
+    </div>
+
+    <!--小悬浮菜单div-->
+    <nav style="position: absolute; bottom:5px; left: 100px; opacity:1;" id="markerMenu">
+        <nav>
+            <img src="../wodetupian/marker_red.png" />
+            <span style="color:green;">旅游规划</span>
+            <img src="../wodetupian/marker.png" />
+            <span style="color:green">旅游景点</span>
+        </nav>
+    </nav>
+  
+</body>
+</html>

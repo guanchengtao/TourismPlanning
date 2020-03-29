@@ -13,7 +13,6 @@
    <property name="RoleInfoService" ref="RoleInfoService" />
     <property name="ActionInfoService" ref="ActionInfoService" />
     <property name="R_UserInfo_ActionInfoService" ref="R_UserInfo_ActionInfoService" />
-    <property name="PublicInformationService" ref="PublicInformationService" />
   </object>
 
   <object type="SDAU.GCT.OA.UI.Portal.Controllers.HomeController,SDAU.GCT.OA.UI.Portal" singleton="false" >

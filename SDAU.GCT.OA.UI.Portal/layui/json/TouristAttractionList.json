@@ -1,0 +1,55 @@
+﻿{
+    "msg": "",
+    "code": 0,
+    "count": 6,
+    "data": [
+        {
+            "Id": 6,
+            "Name": "森罗殿",
+            "Location": "平原县",
+            "EyeCount": 20,
+            "SubTime": "2020/03/10 15:08:22",
+            "LongitudeAndLatitude": "(116.328535,37.144268)"
+        },
+        {
+            "Id": 5,
+            "Name": "龙门石刻",
+            "Location": "城东南角",
+            "EyeCount": 33,
+            "SubTime": "2020/03/10 15:03:17",
+            "LongitudeAndLatitude": "(116.358509,37.176925)"
+        },
+        {
+            "Id": 5,
+            "Name": "千佛塔",
+            "Location": "平原城北2公里处",
+            "EyeCount": 50,
+            "SubTime": "2020/03/10 10:09:00",
+            "LongitudeAndLatitude": "(116.528535,37.282391)"
+        },
+        {
+            "Id": 3,
+            "Name": "三国文化广场",
+            "Location": "平原县",
+            "EyeCount": 80,
+            "SubTime": "2020/03/07 09:12:16",
+            "LongitudeAndLatitude": "(116.358509,37.176925)"
+        },
+        {
+            "Id": 2,
+            "Name": "康熙探花花园",
+            "Location": "平原县",
+            "EyeCount": 88,
+            "SubTime": "2020/03/07 08:03:10",
+            "LongitudeAndLatitude": "(116.269042,37.562375)"
+        },
+        {
+            "Id": 1,
+            "Name": "小康村",
+            "Location": "平原县",
+            "EyeCount": 102,
+            "SubTime": "2020/03/05 13:14:26",
+            "LongitudeAndLatitude": "(116.421525,37.124235)"
+        }
+    ]
+}

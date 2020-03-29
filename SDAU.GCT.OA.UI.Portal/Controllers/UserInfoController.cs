@@ -22,8 +22,6 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         public IRoleInfoService RoleInfoService { get; set; }
         public IActionInfoService ActionInfoService { get; set; }
         public IR_UserInfo_ActionInfoService R_UserInfo_ActionInfoService { get; set; }
-
-        public IPublicInformationService PublicInformationService { get; set; }
         public ActionResult Index()
         {
             ViewData.Model = UserInfoService.GetEntities(u => u.DelFlag == 1);
@@ -36,6 +34,7 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             var olddata = UserInfoService.GetEntities(u => u.DelFlag == 1);
             var data = olddata.Select(u => new
             {
+                u.Id,
                 u.UserName,
                 u.UserPwd
             });
@@ -51,95 +50,7 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult GetPubicInformation(int page, int limit)
-        {
-            var dataObj = PublicInformationService.GetEntities(u => u.DelFlag == 1);
-            var data = dataObj.OrderByDescending(x => x.SubTime)
-            .Take(limit * page).Skip(limit * (page - 1));//进行分页
-            var result = new List<PublicInformationDTO>();
-            foreach (var item in data)
-            {
-                var info = new PublicInformationDTO
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    Content = item.Content,
-                    SubTime = TimeFormatter.TimeFormat(item.SubTime.ToString()),
-                    SubUnit = item.SubUnit,
-                    Author = item.Author,
-                    BrowseTime = item.BrowseTime,
-                    Remark = item.Remark,
-                    Type = GetInfoType(item.Type)
-                };
-                result.Add(info);
-            }
-            var jsondata = new
-            {
-                msg = string.Empty,
-                code = Status.success,
-                count = dataObj.Count(),
-                data = result
-            };
-            return Json(jsondata, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public ActionResult GetPubicInformationById(int Id)
-        {
-            var info = new PublicInformationDTO();
-            var dataObjs = PublicInformationService.GetEntities(u => u.Id == Id && u.DelFlag == 1);
-            if(dataObjs != null &&dataObjs.Count() > 0)
-            {
-                var dataObj = dataObjs.FirstOrDefault();
-                info.Id = dataObj.Id;
-                info.Title = dataObj.Title;
-                info.Content = dataObj.Content;
-                info.SubTime = TimeFormatter.TimeFormat(dataObj.SubTime.ToString());
-                info.SubUnit = dataObj.SubUnit;
-                info.Author = dataObj.Author;
-                info.BrowseTime = dataObj.BrowseTime;
-                info.Remark = dataObj.Remark;
-                info.Type = GetInfoType(dataObj.Type);
-                var jsondata = new
-                {
-                    code = Status.success,
-                    count = 1,
-                    data = info
-                };
-                return Json(jsondata, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(new
-                {
-                    code = Status.error,
-                    count = 0,
-                    data = info
-                }, JsonRequestBehavior.AllowGet);
-            }
-          
-        }
-
-        public string GetInfoType(int type)
-        {
-            string result = string.Empty;
-            switch (type)
-            {
-                case 0:
-                    result = "新闻";
-                    break;
-                case 1:
-                    result = "公告";
-                    break;
-                case 2:
-                    result = "通报";
-                    break;
-                default:
-                    break;
-            }
-            return result;
-        }
+       
         [HttpGet]
         public ActionResult GetUser(int id)
         {
@@ -165,74 +76,34 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult Create(UserInfo userInfo)
+        public ActionResult AddUserInfo(UserInfo userInfo)
         {
+            var nameList = UserInfoService.GetEntities(x => x.UserName == userInfo.UserName
+            && x.DelFlag == 1);
+            if(nameList.Count() > 0)
+            {
+                return Json(new
+                {
+                    msg = "用户名已存在，换个吧~~",
+                    code = Status.error
+                }
+                , JsonRequestBehavior.AllowGet);
+            }
             userInfo.SubTime = DateTime.Now;
             userInfo.DelFlag = 1;
-            if (ModelState.IsValid)
-            {
-                UserInfoService.Add(userInfo);
-            }
+            string userName = userInfo.UserName;
+            string userPwd = userInfo.UserPwd;
+            string tempPwd = $"{userName}{userPwd}";
+            userInfo.UserName = userName;
+            userInfo.UserPwd = MD5Helper.GenerateMD5(tempPwd);
+            userInfo.Remark = userInfo.UserPwd;
+            UserInfoService.Add(userInfo);
             var jsondata = new { Status.code };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
 
         }
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult AddPublicInfo(PublicInformationDTO publicInfomationdto)
-        {
-            var publicInformation = new PublicInformation();
-            publicInformation.Title = publicInfomationdto.Title;
-            publicInformation.Type = Int32.Parse(publicInfomationdto.Type);
-            publicInformation.Content = publicInfomationdto.Content;
-            publicInformation.SubUnit = publicInfomationdto.SubUnit;
-            publicInformation.Author = publicInfomationdto.Author;
-            publicInformation.SubTime = DateTime.Now;
-            publicInformation.Remark = string.Empty;
-            //string content = Server.HtmlEncode(form["content"]);
-            publicInformation.DelFlag = 1;
-            if (ModelState.IsValid)
-            {
-                PublicInformationService.Add(publicInformation);
-            }
-            var jsondata = new { Status.code };
-            return Json(jsondata, JsonRequestBehavior.AllowGet);
-
-        }
-
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult EditPublicInfo(PublicInformationDTO publicInfomationdto)
-        {
-            var publicInformation = PublicInformationService.GetEntities(x => x.Id ==
-            publicInfomationdto.Id && x.DelFlag == 1).FirstOrDefault() ;
-            publicInformation.Title = publicInfomationdto.Title;
-            publicInformation.Type = Int32.Parse(publicInfomationdto.Type);
-            publicInformation.Content = publicInfomationdto.Content;
-            publicInformation.SubUnit = publicInfomationdto.SubUnit;
-            publicInformation.Author = publicInfomationdto.Author;
-            publicInformation.Remark = string.Empty;
-            //string content = Server.HtmlEncode(form["content"]);
-            if (ModelState.IsValid)
-            {
-                PublicInformationService.Update(publicInformation);
-            }
-            var jsondata = new { Status.code };
-            return Json(jsondata, JsonRequestBehavior.AllowGet);
-
-        }
-        [HttpPost]
-        public ActionResult DeletePublicInfo(int Id)
-        {
-
-            PublicInformationService.DeleteSingle(Id);
-
-            var jsondata = new { Status.code };
-            return Json(jsondata, JsonRequestBehavior.AllowGet);
-
-        }
-
+       
         [HttpPost]
         public ActionResult DeleteSingle(int id)
         {
