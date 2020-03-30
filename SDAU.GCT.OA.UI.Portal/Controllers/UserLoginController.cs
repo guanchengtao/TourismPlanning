@@ -39,18 +39,18 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             string sessioncode = Session["Vcode"].ToString();
             if (string.IsNullOrEmpty(sessioncode) || strcode != sessioncode)
             {
-                return Content("验证码错误");
+                var data = new { msg = "验证码错误", code = 500 };
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
             #endregion
             string name = Request["username"].ToString();
             string pwd = Request["userpwd"].ToString();
             string password = MD5Helper.GenerateMD5($"{name}{pwd}");
-            var userInfo = 
-                 UserInfoService.GetEntities(u => u.UserName == name && u.UserPwd == password && u.DelFlag == 1)
-.FirstOrDefault();
+            var userInfo = UserInfoService.GetEntities(u => u.UserName == name &&
+            u.UserPwd == password && u.DelFlag == 1).FirstOrDefault();
             if (userInfo == null)
             {
-                var data = new{ msg = "账号或密码错误",code=500 };
+                var data = new{ msg = "用户名或密码错误",code=501 };
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
             else

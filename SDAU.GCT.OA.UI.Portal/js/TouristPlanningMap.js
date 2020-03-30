@@ -120,10 +120,10 @@ function mapInit() {
     mymap.addControl(new NPositionControl());
     mymap.addControl(new NScaleControl());
     mymap.setMode("dragzoom");
-    mymap.on("click", tip);  
+    mymap.on("click", tip);
 
     //添加比例尺到地图 
-    $.getJSON("../layui/json/TouristAttractionListMap.json", {}, function (data) {
+    $.getJSON("../json/TouristPlanningListMap.json", {}, function (data) {
         console.log(data);
         var gisdata = data.data;
         $.each(gisdata, function (index, n) {
@@ -137,7 +137,7 @@ function mapInit() {
             //gisdata[index].TuPian = unescape(gisdata[index].TuPian);
         });
         for (var i = 0; i < data.count; i++) {
-            var marker = new NMarker(new NXY(gisdata[i].Longitude, gisdata[i].Latitude), { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao });
+            var marker = new NMarker(new NXY(gisdata[i].Longitude, gisdata[i].Latitude), { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao, imgUrl: "../../map/images/marker_red.png", });
             marker.setDialog("<div style ='margin:0px;' > " +
                 "<div style='margin:10px 10px; '>" +
                 "<img style='float:left;margin:0px 10px' width='100' height='80' title='' " + gisdata[i].Image + "+/>" +
@@ -151,6 +151,9 @@ function mapInit() {
             mymap.addOverlays(marker);
         }
     });
+
+
+   
     $("#vec_").click(showVector);
     $("#img_").click(showRaster);
 };
@@ -166,7 +169,7 @@ function delete1(id) {
         return;
     }
 
-} 
+}
 function guihuaedit(id) {
     window.location.href = "../Admin/aspx/LvYouGuiHua_Edit.aspx?id=" + id;
 }

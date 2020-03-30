@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>旅游信息</title>
+    <title>旅游景点</title>
 
     <link rel="stylesheet" href="../src/css/layui.css">
 
@@ -28,17 +28,17 @@
         <div class="demoTable" style="margin-left:280px">
             <!--<form class="layui-form">-->
             <div class="layui-input-inline">
-    <select name="interest-search" lay-filter="interest-search" lay-search style="height:34px">
+    <!--<select name="interest-search" lay-filter="interest-search" lay-search style="height:34px">
         <option value="-1">全部类型</option>
         <option value="0">新闻</option>
         <option value="1">公告</option>
         <option value="2">通报</option>
-    </select>
+    </select>-->
 </div>
             <!--</form>-->
             
             <div class="layui-inline">
-                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="标题/发布人/发布单位" name="keyword" id="demoReload" autocomplete="off">
+                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="请输入景点名称" name="keyword" id="demoReload" autocomplete="off">
             </div> &nbsp;<button class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
         </div>
     </script>
@@ -71,7 +71,7 @@
                 , height: 555
                 //,width: 600
                 , title: '数据表'
-                , url: '../../PublicInformation/GetPubicInformation'
+                , url: '../json/TouristAttractionList.json'
                 // ,size: 'lg'
                 , page: {
 
@@ -89,13 +89,12 @@
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
                     , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
-                    , { field: 'Author', title: '标题', width: 120 }
-                    , { field: 'Title', title: '发布人', width: 120 }
-                    , { field: 'SubUnit', title: '发布单位', width: 120 }
-                    , { field: 'Type', title: '类型', width: 120 }
-                    , { field: 'Content', title: '内容', width: 220 }
-                    , { field: 'SubTime', title: '发布时间', width: 120 }
-                    , { fixed: '', title: '操作', toolbar: '#barDemo', width: 150 }
+                    , { field: 'Name', title: '景点名称', width: 120 }
+                    , { field: 'Location', title: '位置', width: 120 }
+                    , { field: 'LongitudeAndLatitude', title: '经纬度', width: 220 }
+                    , { field: 'EyeCount', title: '浏览次数', width: 120 }
+                    , { field: 'SubTime', title: '发布时间', width: 190 }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
                 ]]
                 /*
                 ,response: {

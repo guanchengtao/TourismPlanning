@@ -13,7 +13,9 @@
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left">
                 <li class="layui-nav-item"><a href="">控制台</a></li>
-                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a data-url="UserInfo" data-id="11" data-title="用户管理" href="#" class="site-demo-active" data-type="tabAdd">用户</a>
+                </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">管理</a>
                     <dl class="layui-nav-child">
@@ -41,7 +43,8 @@
 
         <div class="layui-tab layui-tab-card site-demo-button" style="position: relative;">
             <ul class="layui-nav layui-nav-tree layui-nav-side">
-                <li class="layui-nav-item layui-nav-itemed" style="margin-top:60px">
+                <li class="layui-nav-item layui-this" style="margin-top:60px">  <a data-url="AttractionPlanningMap" data-id="10" data-title="旅游景点规划图" href="#" class="site-demo-active" data-type="tabAdd">旅游景点规划图</a></li>
+                <li class="layui-nav-item layui-nav-itemed" >
                     <a href="javascript:;">公开信息</a>
                     <dl class="layui-nav-child">
                         <dd>
@@ -51,19 +54,21 @@
                             <a data-url="TouristAttraction" data-id="12" data-title="旅游景点" href="#" class="site-demo-active" data-type="tabAdd">旅游景点</a>
                         </dd>
                         <dd>
-                            <a href="TouristAttraction" data-url="rate" data-title="旅游景点地图" data-id="22" class="site-demo-active" data-type="tabAdd">旅游规划</a>
+                            <a data-url="TouristPlanning" data-id="16" data-title="旅游规划" href="#" class="site-demo-active" data-type="tabAdd">旅游规划</a>
                         </dd>
+
 
                     </dl>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed" style="margin-top:1px">
-                    <a href="javascript:;">公开信息</a>
+                    <a href="javascript:;">地图</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a data-url="table2" data-id="11" data-title="公开信息" href="#" class="site-demo-active" data-type="tabAdd">公开信息</a>
+                            <a data-url="TouristAttractionMap" data-id="13" data-title="旅游景点"
+                               href="#" class="site-demo-active" data-type="tabAdd">旅游景点</a>
                         </dd>
                         <dd>
-                            <a href="#" data-url="rate" data-title="选项b" data-id="22" class="site-demo-active" data-type="tabAdd">旅游规划</a>
+                            <a data-url="TouristPlanningMap" data-id="14" data-title="旅游规划" href="#" class="site-demo-active" data-type="tabAdd">旅游规划</a>
                         </dd>
 
                     </dl>
@@ -92,7 +97,7 @@
             layui.use('element', function () {
                 var $ = layui.jquery;
                 var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-
+                  
                 //触发事件
                 var active = {
                     //在这里给active绑定几项事件，后面可通过active调用这些事件
@@ -121,7 +126,8 @@
                     }
                 };
 
-
+                active.tabAdd("AttractionPlanningMap", 10, "旅游景点规划图");
+                 active.tabChange(10);
                 //当点击有site-demo-active属性的标签时，即左侧菜单栏中内容 ，触发点击事件
                 $('.site-demo-active').on('click', function () {
                     var dataid = $(this);

@@ -6,7 +6,7 @@ var layerraster_label;
 
 $(document).ready(mapInit);
 //加载地图
-function mapInit() { 
+function mapInit() {
     //地图实例化  
     mymap = new NMap("map-canvas");
     //图层参数设置  
@@ -120,64 +120,57 @@ function mapInit() {
     mymap.addControl(new NPositionControl());
     mymap.addControl(new NScaleControl());
     mymap.setMode("dragzoom");
-    mymap.on("click", tip);  
+    mymap.on("click", tip);
 
     //添加比例尺到地图 
-  
-    $.getJSON("../Admin/ashx/LvYouGuiHuaList.ashx", {}, function (data) {
-        var gisdata = data.list;
-        for (var i = 0; i < data.Count; i++) {
-            var markerOptions = {
-                imgUrl: "../wodetupian/marker_red.png",
-                markerTitle: gisdata[i].GHXMMingCheng,
-                assignId: gisdata[i].GHXMBianHao
-            }
-            var marker = new NMarker(new NXY(gisdata[i].JingDu, gisdata[i].WeiDu), markerOptions);
+    $.getJSON("../json/TouristPlanningListMap.json", {}, function (data) {
+        console.log(data);
+        var gisdata = data.data;
+        $.each(gisdata, function (index, n) {
+            //gisdata[index].JDJieShao = unescape(gisdata[index].JDJieShao);
+            //if (gisdata[index].JDJieShao.length < 120) {
+            //    gisdata[index].JDJieShao = gisdata[index].JDJieShao;
+            //}
+            //else {
+            //    gisdata[index].JDJieShao = gisdata[index].JDJieShao.substring(-1, 260) + '...';
+            //}
+            //gisdata[index].TuPian = unescape(gisdata[index].TuPian);
+        });
+        for (var i = 0; i < data.count; i++) {
+            var marker = new NMarker(new NXY(gisdata[i].Longitude, gisdata[i].Latitude), { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao, imgUrl: "../../map/images/marker_red.png", });
             marker.setDialog("<div style ='margin:0px;' > " +
                 "<div style='margin:10px 10px; '>" +
-                //"<img style='float:left;margin:0px 10px' width='100' height='80' title='' " + gisdata[i].TuPian + "+/>" +
-                "  <div style='width:170px;height:auto'>规划编号:" + gisdata[i].GHXMBianHao + "<br>规划名称:" + gisdata[i].GHXMMingCheng + "<span style='width:169px'></span></div>" +
+                "<img style='float:left;margin:0px 10px' width='100' height='80' title='' " + gisdata[i].Image + "+/>" +
+                "  <div style='margin:0px 0px 0px 120px;width:170px;height:auto'>景点名称:" + gisdata[i].Name + "<br>景点简介:" + gisdata[i].JDJieShao + "<span style='width:169px'></span></div>" +
                 "</div>" +
-                '<input type="button" value="查看" onclick="guihuaview(\'' + gisdata[i].GHXMBianHao + '\')"/>' +
-                '<input type="button" value="编辑" onclick="guihuaedit(\'' + gisdata[i].GHXMBianHao + '\')"/>' +
-                '<input type="button" value="删除" onclick="guihuadelete(\'' + gisdata[i].GHXMBianHao + '\')"/>' +
+                "<input type='button' name='delete' value ='查看' id ='edit' onclick=view(" + gisdata[i].Id + ") />" +
+                "<input type='button' name='delete' value ='编辑' id ='edit' onclick=edit(" + gisdata[i].Id + ") />" +
+                "<input type='button' name='delete' value ='删除' id ='delete' onclick=delete1(" + gisdata[i].Id + ") />" +
                 "</div>");
             //标注添加到地图  
             mymap.addOverlays(marker);
         }
     });
-    //$.getJSON("../Admin/ashx/JingDianList.ashx", {}, function (data) {
-    //    var gisdata = data.jingdianList;
-    //    $.each(gisdata, function (index, n) {
-    //        gisdata[index].JDJieShao = unescape(gisdata[index].JDJieShao);
-    //        if (gisdata[index].JDJieShao.length < 120) {
-    //            gisdata[index].JDJieShao = gisdata[index].JDJieShao;
-    //        }
-    //        else {
-    //            gisdata[index].JDJieShao = gisdata[index].JDJieShao.substring(-1, 260) + '...';
-    //        }
-    //        gisdata[index].TuPian = unescape(gisdata[index].TuPian);
-    //    });
-    //    for (var i = 0; i < data.jingdianCount; i++) {
-    //        var marker = new NMarker(new NXY(gisdata[i].JingDu, gisdata[i].WeiDu), { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao });
-    //        marker.setDialog("<div style ='margin:0px;' > " +
-    //            "<div style='margin:10px 10px; '>" +
-    //            "<img style='float:left;margin:0px 10px' width='100' height='80' title='' " + gisdata[i].TuPian + "+/>" +
-    //            "  <div style='margin:0px 0px 0px 120px;width:170px;height:auto'>景点名称:" + gisdata[i].JDMingCheng + "<br>景点简介:" + gisdata[i].JDJieShao + "<span style='width:169px'></span></div>" +
-    //            "</div>" +
-    //            "<input type='button' name='delete' value ='查看' id ='edit' onclick=view(" + gisdata[i].JDBianHao + ") />" +
-    //            "<input type='button' name='delete' value ='编辑' id ='edit' onclick=edit(" + gisdata[i].JDBianHao + ") />" +
-    //            "<input type='button' name='delete' value ='删除' id ='delete' onclick=delete1(" + gisdata[i].JDBianHao + ") />" +
-    //            "</div>");
-    //        //标注添加到地图  
-    //        mymap.addOverlays(marker);
-    //    }
-    //});
 
 
-
-
-
+    $.getJSON("../json/TouristAttractionListMap.json", {}, function (data) {
+        console.log(data);
+        var gisdata = data.data;
+        for (var i = 0; i < data.count; i++) {
+            var marker = new NMarker(new NXY(gisdata[i].Longitude, gisdata[i].Latitude), { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao });
+            marker.setDialog("<div style ='margin:0px;' > " +
+                "<div style='margin:10px 10px; '>" +
+                "<img style='float:left;margin:0px 10px' width='100' height='80' title='' " + gisdata[i].Image + "+/>" +
+                "  <div style='margin:0px 0px 0px 120px;width:170px;height:auto'>景点名称:" + gisdata[i].Name + "<br>景点简介:" + gisdata[i].JDJieShao + "<span style='width:169px'></span></div>" +
+                "</div>" +
+                "<input type='button' name='delete' value ='查看' id ='edit' onclick=view(" + gisdata[i].Id + ") />" +
+                "<input type='button' name='delete' value ='编辑' id ='edit' onclick=edit(" + gisdata[i].Id + ") />" +
+                "<input type='button' name='delete' value ='删除' id ='delete' onclick=delete1(" + gisdata[i].Id + ") />" +
+                "</div>");
+            //标注添加到地图  
+            mymap.addOverlays(marker);
+        }
+    });
     $("#vec_").click(showVector);
     $("#img_").click(showRaster);
 };
@@ -193,7 +186,7 @@ function delete1(id) {
         return;
     }
 
-} 
+}
 function guihuaedit(id) {
     window.location.href = "../Admin/aspx/LvYouGuiHua_Edit.aspx?id=" + id;
 }

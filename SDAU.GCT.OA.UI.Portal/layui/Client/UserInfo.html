@@ -30,7 +30,7 @@
             <!--</form>-->
             
             <div class="layui-inline">
-                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="" name="keyword" id="demoReload" autocomplete="off">
+                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="请输入用户姓名" name="keyword" id="demoReload" autocomplete="off">
             </div> &nbsp;<button class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
         </div>
     </script>
@@ -83,7 +83,7 @@
                     , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
                     , { field: 'UserName', title: '名称', width: 120 }
                     , { field: 'UserPwd', title: '密码', width: 120 }
-                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                    , { fixed: '', title: '操作', toolbar: '#barDemo', width: 150 }
                 ]]
             });
 
@@ -129,52 +129,11 @@
                         }, 'data');
                         break;
                     case 'search':
-                        var key_word=$("#_key_word").val();
-                        window.ins1 = table.render({
-                            elem: '#test'
-                            , height: 555
-                            //,width: 600
-                            , title: '数据表'
-                            , url: '../../PublicInformation/GetPubicInformation'
-                            // ,size: 'lg'
-                            , where: { keyword: '' + key_word }
-                            ,page: {}
-                            , autoSort: false
-                            , loading: false
-                            , totalRow: true
-                            , limit: 10
-                            , toolbar: '#toolbarDemo'
-                            , defaultToolbar: ['filter', 'exports', 'print', {
-                                  title: '帮助'
-                                , layEvent: 'LAYTABLE_TIPS'
-                                , icon: 'layui-icon-tips'
-                            }]
-                            , cols: [[
-                                { type: 'checkbox', fixed: 'left' }
-                                , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
-                                , { field: 'Author', title: '标题', width: 120 }
-                                , { field: 'Title', title: '发布人', width: 120 }
-                                , { field: 'SubUnit', title: '发布单位', width: 120 }
-                                , { field: 'Type', title: '类型', width: 120 }
-                                , { field: 'Content', title: '内容', width: 220 }
-                                , { field: 'SubTime', title: '发布时间', width: 120 }
-                                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
-                            ]]
-                            /*
-                            ,response: {
-                              statusName: 'status'
-                              ,statusCode: 200
-                            }
-                            ,parseData: function(res){
-                              return {
-                                "status": res.status
-                                ,"msg": res.message
-                                ,"count": res.total
-                                ,"data": res.data.list
-                              };
-                            }
-                            */
-                        });
+                       table.reload('test', {
+                            page: { curr: 1 }
+                            //,height: 300
+                            //,url: 'x'
+                        }, 'data');
                         break;
                 };
             });
@@ -221,8 +180,8 @@
                 if (obj.event === 'del') {
                     layer.confirm('懂删除吗？', function (index) {
                         $.ajax({
-                            url: '../../PublicInformation/DeletePublicInfo',
-                            type: 'POST',
+                            url: '../../UserInfo/DeleteSingle',
+                            type: 'post',
                             dataType: 'json',
                             data: {
                                 Id: obj.data.Id
@@ -234,7 +193,7 @@
                                     layer.load(2);
                                     layer.msg("删除成功", { icon: 6 });
                                     setTimeout(function () {
-                                        window.location.reload();//修改成功后刷新父界面
+                                        window.location.reload();//
                                     }, 500);
                                     //加载层-风格
 

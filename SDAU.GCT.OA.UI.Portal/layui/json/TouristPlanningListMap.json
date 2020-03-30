@@ -1,0 +1,37 @@
+﻿{
+    "msg": "",
+    "code": 0,
+    "count": 3,
+    "data": [
+      {
+        "Id": 3,
+        "Name": "三国文化广场",
+        "Location": "平原县",
+        "EyeCount": 80,
+        "SubTime": "2020/03/07 09:12:16",
+        "Longitude": "116.302069",
+        "Latitude": "37.151687",
+        "Image": ""
+      },
+      {
+        "Id": 2,
+        "Name": "康熙探花花园",
+        "Location": "平原县",
+        "EyeCount": 88,
+        "SubTime": "2020/03/07 08:03:10",
+        "Longitude": "116.33488",
+        "Latitude": "37.141687",
+        "Image": ""
+      },
+      {
+        "Id": 1,
+        "Name": "小康村",
+        "Location": "平原县",
+        "EyeCount": 102,
+        "SubTime": "2020/03/05 13:14:26",
+        "Longitude": "116.305875",
+        "Latitude": "37.180490",
+        "Image": ""
+      }
+    ]
+}

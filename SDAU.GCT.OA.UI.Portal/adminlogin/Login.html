@@ -110,29 +110,52 @@
 
 
     </div>
+    <script src="../../layui/src/layui.js" charset="utf-8"></script>
 
-    <script src="js/layui.js"></script>
     <script>
-        $("#Login").click(function () {
-            var username = $("#LAY-user-login-username").val();
-            var userpwd = $("#LAY-user-login-password").val();
-            var usercode = $("#LAY-user-login-vercode").val();
-            $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                async: false,
-                url: "/UserLogin/LoginProcess",
-                data: {
-                    username: username,
-                    userpwd: userpwd,
-                    usercode: usercode
-                },
-                success: function (data) {
-                    if (data.code == 200) {
-                        window.location.href = "../layui/examples/admin.html";
-                    }
+        layui.use('table', function () {
+            var table = layui.table;
+            var form = layui.form, layer = layui.layer;
+
+            $("#Login").click(function () {
+                var username = $("#LAY-user-login-username").val();
+                var userpwd = $("#LAY-user-login-password").val();
+                var usercode = $("#LAY-user-login-vercode").val();
+                if (username.length == 0 || userpwd.length == 0) {
+                    layer.msg("用户名密码不能为空", { icon: 8 });
                 }
-            });
+                if (usercode.length == 0) {
+                    layer.msg("请输入验证码", { icon: 8 });
+                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    async: false,
+                    url: "/UserLogin/LoginProcess",
+                    data: {
+                        username: username,
+                        userpwd: userpwd,
+                        usercode: usercode
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            window.location.href = "../layui/examples/admin.html";
+                        }
+                        if (data.code == 500) {
+                            layer.msg(data.msg, { icon: 8 });
+                            setTimeout(function () {
+                                window.location.reload();//
+                            }, 2000);
+                        }
+                        if (data.code == 501) {
+                            layer.msg(data.msg, { icon: 8 });
+                            setTimeout(function () {
+                                window.location.reload();//
+                            }, 2000);
+                        }
+                    }
+                });
+            })
         })
     </script>
 </body>
