@@ -19,13 +19,22 @@ public partial interface IDbSession
       IR_UserInfo_ActionInfoDal R_UserInfo_ActionInfoDal { get; }
 	
 	
+      IReplyCommentDal ReplyCommentDal { get; }
+	
+	
       IRoleInfoDal RoleInfoDal { get; }
 	
 	
-      IUserCommentDal UserCommentDal { get; }
+      ITouristAttractionDal TouristAttractionDal { get; }
+	
+	
+      ITouristPlanningDal TouristPlanningDal { get; }
 	
 	
       IUserInfoDal UserInfoDal { get; }
+	
+	
+      IVisitorCommentDal VisitorCommentDal { get; }
 	
 }
 }

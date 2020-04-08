@@ -29,7 +29,10 @@ namespace SDAU.GCT.OA.Model
         public virtual DbSet<PublicInformation> PublicInformation { get; set; }
         public virtual DbSet<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
         public virtual DbSet<RoleInfo> RoleInfo { get; set; }
-        public virtual DbSet<UserComment> UserComment { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<TouristAttraction> TouristAttraction { get; set; }
+        public virtual DbSet<TouristPlanning> TouristPlanning { get; set; }
+        public virtual DbSet<VisitorComment> VisitorComment { get; set; }
+        public virtual DbSet<ReplyComment> ReplyComment { get; set; }
     }
 }

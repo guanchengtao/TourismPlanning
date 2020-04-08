@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>旅游信息</title>
+    <title>旅客留言信息</title>
 
     <link rel="stylesheet" href="../src/css/layui.css">
 
@@ -19,26 +19,22 @@
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container" style="position:absolute">
-            <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
-            <button class="layui-btn layui-btn-sm" lay-event="getCheckData">批量删除</button>
-            <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>-->
-            <button class="layui-btn layui-btn-sm" lay-event="isAll">导入数据</button>
-            <button class="layui-btn layui-btn-sm" lay-event="reload">重载</button>
-        </div>
-        <div class="demoTable" style="margin-left:280px">
-            <!--<form class="layui-form">-->
-            <div class="layui-input-inline">
-    <select name="interest-search" lay-filter="interest-search" lay-search style="height:34px">
-        <option value="-1">全部类型</option>
-        <option value="0">新闻</option>
-        <option value="1">公告</option>
-        <option value="2">通报</option>
-    </select>
-</div>
-            <!--</form>-->
-            
             <div class="layui-inline">
-                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="标题/发布人/发布单位" name="keyword" id="demoReload" autocomplete="off">
+
+                <select name="myselect" id="myselect" lay-verify="required" style="height:30px">
+                    <option value="0">显示全部</option>
+                    <option value="1">已审核</option>
+                    <option value="2">未审核</option>
+                </select>
+
+            </div>
+
+        </div>
+        <div class="demoTable" style="margin-left:230px">
+            <!--</form>-->
+
+            <div class="layui-inline">
+                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="输入关键字" name="keyword" id="demoReload" autocomplete="off">
             </div> &nbsp;<button class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
         </div>
     </script>
@@ -46,8 +42,18 @@
     <table id="test" lay-filter="test"></table>
 
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        {{#  if(d.State ==1){ }}
+        <a class="layui-btn layui-btn-xs layui-btn-info" id="xiugai" lay-event="update">查看回复</a>
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="dessl">删除</a>
+
+
+        {{#  } }}
+        {{#  if(d.State == 0){ }}
+
+        <a class="layui-btn layui-btn-xs layui-btn-info" lay-event="del">审核通过</a>
+        <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="ddd">驳回并删除</a>
+
+        {{#  } }}
     </script>
     <script type="text/html" id="checkboxTpl">
         <input type="checkbox" name="" title="锁定" checked>
@@ -71,7 +77,8 @@
                 , height: 555
                 //,width: 600
                 , title: '数据表'
-                , url: '../../PublicInformation/GetPubicInformation'
+                //, url: '../../PublicInformation/GetPubicInformation'
+                , url: '../json/UsercommontList.json'
                 // ,size: 'lg'
                 , page: {
 
@@ -89,13 +96,10 @@
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
                     , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
-                    , { field: 'Title', title: '标题', width: 150 }
-                    , { field: 'Author', title: '发布人', width: 120 }
-                    , { field: 'SubUnit', title: '发布单位', width: 120 }
-                    , { field: 'Type', title: '类型', width: 120 }
-                    , { field: 'Content', title: '内容', width: 220 }
-                    , { field: 'SubTime', title: '发布时间', width: 180 }
-                    , { fixed: '', title: '操作', toolbar: '#barDemo', width: 150 }
+                    , { field: 'Visitor', title: '游客', width: 120 }
+                    , { field: 'Comment', title: '内容', width: 420 }
+                    , { field: 'SubTime', title: '发布时间', width: 200 }
+                    , { fixed: '', title: '操作', toolbar: '#barDemo', width: 200 }
                 ]]
                 /*
                 ,response: {
@@ -155,7 +159,7 @@
                         }, 'data');
                         break;
                     case 'search':
-                        var key_word=$("#_key_word").val();
+                        var key_word = $("#_key_word").val();
                         window.ins1 = table.render({
                             elem: '#test'
                             , height: 555
@@ -164,14 +168,14 @@
                             , url: '../../PublicInformation/GetPubicInformation'
                             // ,size: 'lg'
                             , where: { keyword: '' + key_word }
-                            ,page: {}
+                            , page: {}
                             , autoSort: false
                             , loading: false
                             , totalRow: true
                             , limit: 10
                             , toolbar: '#toolbarDemo'
                             , defaultToolbar: ['filter', 'exports', 'print', {
-                                  title: '帮助'
+                                title: '帮助'
                                 , layEvent: 'LAYTABLE_TIPS'
                                 , icon: 'layui-icon-tips'
                             }]
@@ -184,7 +188,7 @@
                                 , { field: 'Type', title: '类型', width: 120 }
                                 , { field: 'Content', title: '内容', width: 220 }
                                 , { field: 'SubTime', title: '发布时间', width: 120 }
-                                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                                , { fixed: 'right', title: '操作',toolbar: '#barDemo', width: 150 }
                             ]]
                             /*
                             ,response: {
@@ -204,7 +208,7 @@
                         break;
                 };
             });
-          
+
 
             //监听表格行点击
             table.on('tr', function (obj) {
@@ -215,11 +219,11 @@
             table.on('checkbox(test)', function (obj) {
                 console.log(obj)
             });
-              //事件监听
+            //事件监听
             form.on('select', function (data) {
                 console.log('select: ', data.value);
-                 //渲染
-         
+                //渲染
+
             });
             //监听表格单选框选择
             table.on('radio(test)', function (obj) {
@@ -351,5 +355,6 @@
             });
         });
     </script>
+    
 </body>
 </html>

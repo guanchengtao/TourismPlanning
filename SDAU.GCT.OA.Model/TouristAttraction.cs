@@ -12,12 +12,18 @@ namespace SDAU.GCT.OA.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class UserComment
+    public partial class TouristAttraction
     {
         public int Id { get; set; }
-        public string Content { get; set; }
-        public System.DateTime SubTime { get; set; }
-        public int PlantInfoId { get; set; }
+        public string Name { get; set; }
+        public string Introduce { get; set; }
+        public string Location { get; set; }
+        public string Longitude { get; set; }
+        public string Latitude { get; set; }
+        public Nullable<int> MessageCount { get; set; }
+        public Nullable<System.DateTime> SubTime { get; set; }
+        public string Remark { get; set; }
+        public string Image { get; set; }
         public int DelFlag { get; set; }
     }
 }

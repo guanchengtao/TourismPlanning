@@ -603,6 +603,8 @@
     <Content Include="js\timer.js" />
     <Content Include="js\top.js" />
     <Content Include="layui\Client\AttractionPlanningMap.html" />
+    <Content Include="layui\Client\PlanningTimeLine.html" />
+    <Content Include="layui\Client\VisitorReviews.html" />
     <Content Include="layui\Client\TouristPlanningMap.html" />
     <Content Include="layui\Client\TouristPlanning.html" />
     <Content Include="layui\Client\UserInfoAddForm.html" />
@@ -645,6 +647,7 @@
     <Content Include="layui\examples\tree.html" />
     <Content Include="layui\examples\upload.html" />
     <Content Include="layui\examples\util.html" />
+    <Content Include="layui\examples\xingzuo - 复制.html" />
     <Content Include="layui\examples\xingzuo.html" />
     <Content Include="layui\src\font\iconfont.eot" />
     <Content Include="layui\src\font\iconfont.ttf" />
@@ -657,6 +660,7 @@
     <Content Include="js\Web.config" />
     <Content Include="layui\json\TouristAttractionListMap.json" />
     <Content Include="layui\json\TouristPlanningListMap.json" />
+    <Content Include="layui\json\UsercommontList.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="layui\dist\css\layui.css" />
     <Content Include="layui\dist\css\layui.mobile.css" />
@@ -984,6 +988,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyAjaxForm.js" />
+    <Content Include="UploadImage\2020\3\27\6aec64d58f4f886d9a46bcb7b3165730.png" />
+    <Content Include="UploadImage\2020\3\27\815e4e0c7d09fcc420cc611d261727a7.png" />
+    <Content Include="UploadImage\2020\3\27\aebab1d70be75526409655ee1c49eb9c.jpg" />
+    <Content Include="UploadImage\2020\3\27\c3821d6025a61d2e9f3f28fed273150b.jpg" />
+    <Content Include="UploadImage\2020\4\4\3ff7010b10ebcffe6131568024791d89.jpeg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -994,6 +1003,7 @@
     <Compile Include="Controllers\ActionInfoController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TouristPlanningController.cs" />
     <Compile Include="Controllers\RoleInfoController.cs" />
     <Compile Include="Controllers\PublicInformationController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
@@ -1099,6 +1109,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties layui_4json_4touristattractionlistmap_1json__JsonSchema="http://json.schemastore.org/ansible-stable-2.9" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

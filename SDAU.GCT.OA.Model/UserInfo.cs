@@ -19,6 +19,7 @@ namespace SDAU.GCT.OA.Model
         {
             this.R_UserInfo_ActionInfo = new HashSet<R_UserInfo_ActionInfo>();
             this.RoleInfo = new HashSet<RoleInfo>();
+            this.VisitorComment = new HashSet<VisitorComment>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace SDAU.GCT.OA.Model
         public virtual ICollection<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RoleInfo> RoleInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VisitorComment> VisitorComment { get; set; }
     }
 }

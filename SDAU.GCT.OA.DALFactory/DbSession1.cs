@@ -30,21 +30,39 @@ namespace SDAU.GCT.OA.DALFactory
             }
         }
 	  
+	public IReplyCommentDal ReplyCommentDal { get
+            {
+                return StaticDalFactory.getReplyCommentDal();
+            }
+        }
+	  
 	public IRoleInfoDal RoleInfoDal { get
             {
                 return StaticDalFactory.getRoleInfoDal();
             }
         }
 	  
-	public IUserCommentDal UserCommentDal { get
+	public ITouristAttractionDal TouristAttractionDal { get
             {
-                return StaticDalFactory.getUserCommentDal();
+                return StaticDalFactory.getTouristAttractionDal();
+            }
+        }
+	  
+	public ITouristPlanningDal TouristPlanningDal { get
+            {
+                return StaticDalFactory.getTouristPlanningDal();
             }
         }
 	  
 	public IUserInfoDal UserInfoDal { get
             {
                 return StaticDalFactory.getUserInfoDal();
+            }
+        }
+	  
+	public IVisitorCommentDal VisitorCommentDal { get
+            {
+                return StaticDalFactory.getVisitorCommentDal();
             }
         }
 }

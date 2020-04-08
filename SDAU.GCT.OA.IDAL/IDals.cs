@@ -21,15 +21,27 @@ namespace SDAU.GCT.OA.IDAL
     {  
 	}   
 	
+	public partial interface IReplyCommentDal : IBaseDal<ReplyComment>
+    {  
+	}   
+	
 	public partial interface IRoleInfoDal : IBaseDal<RoleInfo>
     {  
 	}   
 	
-	public partial interface IUserCommentDal : IBaseDal<UserComment>
+	public partial interface ITouristAttractionDal : IBaseDal<TouristAttraction>
+    {  
+	}   
+	
+	public partial interface ITouristPlanningDal : IBaseDal<TouristPlanning>
     {  
 	}   
 	
 	public partial interface IUserInfoDal : IBaseDal<UserInfo>
+    {  
+	}   
+	
+	public partial interface IVisitorCommentDal : IBaseDal<VisitorComment>
     {  
 	}   
 }

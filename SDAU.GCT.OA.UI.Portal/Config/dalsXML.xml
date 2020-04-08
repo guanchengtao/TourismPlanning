@@ -40,20 +40,38 @@
   </object>
 
 
+  <object name="ReplyCommentDal"
+ type="SDAU.GCT.OA.DAL.ReplyCommentDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
   <object name="RoleInfoDal"
  type="SDAU.GCT.OA.DAL.RoleInfoDal,SDAU.GCT.OA.DAL"
  singleton="false">
   </object>
 
 
-  <object name="UserCommentDal"
- type="SDAU.GCT.OA.DAL.UserCommentDal,SDAU.GCT.OA.DAL"
+  <object name="TouristAttractionDal"
+ type="SDAU.GCT.OA.DAL.TouristAttractionDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="TouristPlanningDal"
+ type="SDAU.GCT.OA.DAL.TouristPlanningDal,SDAU.GCT.OA.DAL"
  singleton="false">
   </object>
 
 
   <object name="UserInfoDal"
  type="SDAU.GCT.OA.DAL.UserInfoDal,SDAU.GCT.OA.DAL"
+ singleton="false">
+  </object>
+
+
+  <object name="VisitorCommentDal"
+ type="SDAU.GCT.OA.DAL.VisitorCommentDal,SDAU.GCT.OA.DAL"
  singleton="false">
   </object>
 </objects>

@@ -39,6 +39,14 @@ namespace SDAU.GCT.OA.BLL
         }
 		}
 	
+	  public partial class ReplyCommentService : BaseService<ReplyComment>, IReplyCommentService
+    {
+	  public override void GetCurrentDal()
+        {
+            CurrentDal =DbSession.ReplyCommentDal;
+        }
+		}
+	
 	  public partial class RoleInfoService : BaseService<RoleInfo>, IRoleInfoService
     {
 	  public override void GetCurrentDal()
@@ -47,11 +55,19 @@ namespace SDAU.GCT.OA.BLL
         }
 		}
 	
-	  public partial class UserCommentService : BaseService<UserComment>, IUserCommentService
+	  public partial class TouristAttractionService : BaseService<TouristAttraction>, ITouristAttractionService
     {
 	  public override void GetCurrentDal()
         {
-            CurrentDal =DbSession.UserCommentDal;
+            CurrentDal =DbSession.TouristAttractionDal;
+        }
+		}
+	
+	  public partial class TouristPlanningService : BaseService<TouristPlanning>, ITouristPlanningService
+    {
+	  public override void GetCurrentDal()
+        {
+            CurrentDal =DbSession.TouristPlanningDal;
         }
 		}
 	
@@ -60,6 +76,14 @@ namespace SDAU.GCT.OA.BLL
 	  public override void GetCurrentDal()
         {
             CurrentDal =DbSession.UserInfoDal;
+        }
+		}
+	
+	  public partial class VisitorCommentService : BaseService<VisitorComment>, IVisitorCommentService
+    {
+	  public override void GetCurrentDal()
+        {
+            CurrentDal =DbSession.VisitorCommentDal;
         }
 		}
 }

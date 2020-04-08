@@ -30,19 +30,34 @@ namespace SDAU.GCT.OA.DALFactory
         return Assembly.Load(assemblyname).CreateInstance(assemblyname+".R_UserInfo_ActionInfoDal") as IR_UserInfo_ActionInfoDal;
         }
 	  
+		  public static IReplyCommentDal getReplyCommentDal()
+        {      
+        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".ReplyCommentDal") as IReplyCommentDal;
+        }
+	  
 		  public static IRoleInfoDal getRoleInfoDal()
         {      
         return Assembly.Load(assemblyname).CreateInstance(assemblyname+".RoleInfoDal") as IRoleInfoDal;
         }
 	  
-		  public static IUserCommentDal getUserCommentDal()
+		  public static ITouristAttractionDal getTouristAttractionDal()
         {      
-        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".UserCommentDal") as IUserCommentDal;
+        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".TouristAttractionDal") as ITouristAttractionDal;
+        }
+	  
+		  public static ITouristPlanningDal getTouristPlanningDal()
+        {      
+        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".TouristPlanningDal") as ITouristPlanningDal;
         }
 	  
 		  public static IUserInfoDal getUserInfoDal()
         {      
         return Assembly.Load(assemblyname).CreateInstance(assemblyname+".UserInfoDal") as IUserInfoDal;
+        }
+	  
+		  public static IVisitorCommentDal getVisitorCommentDal()
+        {      
+        return Assembly.Load(assemblyname).CreateInstance(assemblyname+".VisitorCommentDal") as IVisitorCommentDal;
         }
 }
 }

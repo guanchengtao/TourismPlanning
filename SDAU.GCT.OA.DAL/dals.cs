@@ -23,15 +23,27 @@ namespace SDAU.GCT.OA.DAL
 	 {
 	 }
 	
+	 public partial class ReplyCommentDal : BaseDal<ReplyComment>, IReplyCommentDal
+	 {
+	 }
+	
 	 public partial class RoleInfoDal : BaseDal<RoleInfo>, IRoleInfoDal
 	 {
 	 }
 	
-	 public partial class UserCommentDal : BaseDal<UserComment>, IUserCommentDal
+	 public partial class TouristAttractionDal : BaseDal<TouristAttraction>, ITouristAttractionDal
+	 {
+	 }
+	
+	 public partial class TouristPlanningDal : BaseDal<TouristPlanning>, ITouristPlanningDal
 	 {
 	 }
 	
 	 public partial class UserInfoDal : BaseDal<UserInfo>, IUserInfoDal
+	 {
+	 }
+	
+	 public partial class VisitorCommentDal : BaseDal<VisitorComment>, IVisitorCommentDal
 	 {
 	 }
 }

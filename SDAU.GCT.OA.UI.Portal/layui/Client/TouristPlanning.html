@@ -23,6 +23,7 @@
             <button class="layui-btn layui-btn-sm" lay-event="getCheckData">批量删除</button>
             <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>-->
             <button class="layui-btn layui-btn-sm" lay-event="isAll">导入数据</button>
+            <button class="layui-btn layui-btn-sm" lay-event="isAll">导出数据</button>
             <button class="layui-btn layui-btn-sm" lay-event="reload">重载</button>
         </div>
         <div class="demoTable" style="margin-left:280px">
@@ -38,7 +39,7 @@
             <!--</form>-->
             
             <div class="layui-inline">
-                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="请输入景点名称" name="keyword" id="demoReload" autocomplete="off">
+                <input id="_key_word" class="layui-input" style="width:200px;" placeholder="请输入规划名称" name="keyword" id="demoReload" autocomplete="off">
             </div> &nbsp;<button class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
         </div>
     </script>
@@ -46,6 +47,7 @@
     <table id="test" lay-filter="test"></table>
 
     <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">查看规划时间轴</a>
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
@@ -71,7 +73,7 @@
                 , height: 555
                 //,width: 600
                 , title: '数据表'
-                , url: '../json/TouristAttractionList.json'
+                , url: '../../TouristPlanning/GetTourismPlanning'
                 // ,size: 'lg'
                 , page: {
 
@@ -89,12 +91,14 @@
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
                     , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
-                    , { field: 'Name', title: '景点名称', width: 120 }
-                    , { field: 'Location', title: '位置', width: 120 }
-                    , { field: 'LongitudeAndLatitude', title: '经纬度', width: 220 }
-                    , { field: 'EyeCount', title: '浏览次数', width: 120 }
+                    , { field: 'Name', title: '规划名称', width: 120 }
+                    , { field: 'PlanLeader', title: '负责人', width: 120 }
+                    , { field: 'PlanArea', title: '规划区域', width: 120 }
+                    , { field: 'PlanTarget', title: '规划目标', width: 120 }
+                    , { field: 'PlanYears', title: '规划年限', width: 120 }
+                    , { field: 'BrowseTime', title: '浏览次数', width: 120 }
                     , { field: 'SubTime', title: '发布时间', width: 190 }
-                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 250 }
                 ]]
                 /*
                 ,response: {
@@ -119,11 +123,11 @@
                     case 'add':
                         layer.open({
                             type: 2,
-                            title: '添加公开信息',
+                            title: '规划介绍',
                             maxmin: true,
-                            area: ['700px', '535px'],
+                            area: ['700px', '700px'],
                             shadeClose: false, //点击遮罩关闭
-                            content: 'PublicInformationAddForm.html',
+                            content: 'PlanningTimeLine.html',
                         });
                         break;
                     case 'update':

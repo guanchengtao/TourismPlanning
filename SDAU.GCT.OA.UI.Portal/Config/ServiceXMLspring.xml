@@ -7,9 +7,22 @@
     <property name="CurrentDal" ref="ActionInfoDal" />
   </object>
 
+
+  <object name="PublicInformationService" type="SDAU.GCT.OA.BLL.PublicInformationService,SDAU.GCT.OA.BLL" singleton="false" >
+    <property name="DbSession" ref="DbSession" />
+    <property name="CurrentDal" ref="PublicInformationDal" />
+  </object>
+
+
   <object name="R_UserInfo_ActionInfoService" type="SDAU.GCT.OA.BLL.R_UserInfo_ActionInfoService,SDAU.GCT.OA.BLL" singleton="false" >
     <property name="DbSession" ref="DbSession" />
     <property name="CurrentDal" ref="R_UserInfo_ActionInfoDal" />
+  </object>
+
+
+  <object name="ReplyCommentService" type="SDAU.GCT.OA.BLL.ReplyCommentService,SDAU.GCT.OA.BLL" singleton="false" >
+    <property name="DbSession" ref="DbSession" />
+    <property name="CurrentDal" ref="ReplyCommentDal" />
   </object>
 
 
@@ -19,9 +32,15 @@
   </object>
 
 
-  <object name="UserCommentService" type="SDAU.GCT.OA.BLL.UserCommentService,SDAU.GCT.OA.BLL" singleton="false" >
+  <object name="TouristAttractionService" type="SDAU.GCT.OA.BLL.TouristAttractionService,SDAU.GCT.OA.BLL" singleton="false" >
     <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="UserCommentDal" />
+    <property name="CurrentDal" ref="TouristAttractionDal" />
+  </object>
+
+
+  <object name="TouristPlanningService" type="SDAU.GCT.OA.BLL.TouristPlanningService,SDAU.GCT.OA.BLL" singleton="false" >
+    <property name="DbSession" ref="DbSession" />
+    <property name="CurrentDal" ref="TouristPlanningDal" />
   </object>
 
 
@@ -30,10 +49,9 @@
     <property name="CurrentDal" ref="UserInfoDal" />
   </object>
 
-  <object name="PublicInformationService" type="SDAU.GCT.OA.BLL.PublicInformationService,SDAU.GCT.OA.BLL" singleton="false" >
-    <property name="DbSession" ref="DbSession" />
-    <property name="CurrentDal" ref="PublicInformationDal" />
-  </object>
-  
-</objects>
 
+  <object name="VisitorCommentService" type="SDAU.GCT.OA.BLL.VisitorCommentService,SDAU.GCT.OA.BLL" singleton="false" >
+    <property name="DbSession" ref="DbSession" />
+    <property name="CurrentDal" ref="VisitorCommentDal" />
+  </object>
+</objects>

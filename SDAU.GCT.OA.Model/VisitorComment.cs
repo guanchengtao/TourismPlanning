@@ -12,26 +12,30 @@ namespace SDAU.GCT.OA.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PublicInformation
+    public partial class VisitorComment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PublicInformation()
+        public VisitorComment()
         {
-            this.VisitorComment = new HashSet<VisitorComment>();
+            this.ReplyComment = new HashSet<ReplyComment>();
+            this.PublicInformation = new HashSet<PublicInformation>();
         }
     
         public int Id { get; set; }
-        public string Title { get; set; }
         public string Content { get; set; }
-        public Nullable<int> Type { get; set; }
         public Nullable<System.DateTime> SubTime { get; set; }
-        public string SubUnit { get; set; }
-        public Nullable<int> BrowseTime { get; set; }
-        public string Author { get; set; }
-        public string Remark { get; set; }
         public Nullable<int> DelFlag { get; set; }
+        public Nullable<int> RecoveryState { get; set; }
+        public Nullable<System.DateTime> RecoveryTime { get; set; }
+        public string RecoveryPeople { get; set; }
+        public string Position { get; set; }
+        public Nullable<int> VisitorId { get; set; }
+        public Nullable<int> State { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VisitorComment> VisitorComment { get; set; }
+        public virtual ICollection<ReplyComment> ReplyComment { get; set; }
+        public virtual UserInfo UserInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PublicInformation> PublicInformation { get; set; }
     }
 }

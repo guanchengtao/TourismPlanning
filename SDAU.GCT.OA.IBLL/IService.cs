@@ -24,17 +24,32 @@ namespace SDAU.GCT.OA.IBLL
 
     }
 	
+	 public partial interface IReplyCommentService:IBaseService<ReplyComment>
+    {
+
+    }
+	
 	 public partial interface IRoleInfoService:IBaseService<RoleInfo>
     {
 
     }
 	
-	 public partial interface IUserCommentService:IBaseService<UserComment>
+	 public partial interface ITouristAttractionService:IBaseService<TouristAttraction>
+    {
+
+    }
+	
+	 public partial interface ITouristPlanningService:IBaseService<TouristPlanning>
     {
 
     }
 	
 	 public partial interface IUserInfoService:IBaseService<UserInfo>
+    {
+
+    }
+	
+	 public partial interface IVisitorCommentService:IBaseService<VisitorComment>
     {
 
     }

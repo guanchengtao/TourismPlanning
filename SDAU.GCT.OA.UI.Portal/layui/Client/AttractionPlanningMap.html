@@ -3,26 +3,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>王打卦镇旅游规划展示与监管系统</title>
-    <link rel="stylesheet" href="../src/css/layui.css">
+
     <script src="../../map/jsAPI/jquery/jquery-3.3.1.min.js"></script>
     <link href="../../map/jsAPI/newmap.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="../../map/jsAPI/NewMap.js"></script>
     <script type="text/javascript" src="../../map/jsAPI/NExtWMTSLayer.js"></script>
     <script src="../../js/TouristAttracAndPlanMap.js"></script>
-    <!--<script src="../bootstrap/js/bootstrap.js"></script>
-    <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="../src/css/layui.css">
 </head>
 
 <body style="position: absolute; overflow: hidden; height: 100%; width: 100%; zoom: 1;" oncontextmenu="return false;">
     <div class="form-group" style="margin-top: 1px;">
+        <button class="layui-btn layui-btn-sm" style="margin-top:10px;margin-bottom:5px" lay-event="search" id="initMap">重载</button>
+        &nbsp;  &nbsp;
+        <div class="layui-inline">
 
-        <button class="layui-btn layui-btn-sm" style="margin-top:10px;margin-bottom:5px" lay-event="search" id="initMap">刷新地图</button>
-        &nbsp; &nbsp; &nbsp;
-        <span>当前坐标点如下：</span>
-        <input type="text" name="jingweidu" value="" id="jingweidu" />
-        <button class="layui-btn layui-btn-sm" style="margin-top:10px;margin-bottom:5px" lay-event="search" id="Add">添加景点</button>
+            <select name="myselect" id="myselect" lay-verify="required" style="height:30px">
+                <option value="0">显示全部</option>
+                <option value="1">只看景点</option>
+                <option value="2">只看规划</option>
+            </select>
 
-
+        </div>
     </div>
 
     <div id="map-canvas" style="top:0px; height: 100%; -webkit-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;"></div>
@@ -33,11 +35,27 @@
     $(function () {
         $("#initMap").click(function () {
             location.reload();
-            $("#jingweidu").val("");
         })
-        $("#Add").click(function () {
-            window.location.href = "../Admin/aspx/LvYouJingDian_Add.aspx?jwdu=" + $("#jingweidu").val();
-        })
+        var opt = $("#myselect").val();
+        if (opt == 0) {
+            TouristPlanning();
+            TouristAttraction();
+        }
+        $("#myselect").change(function () {
+          //  TouristAttractionRemove();
+           // TouristPlanningRemove();
+            //var opt = $("#myselect").val();
+            //if (opt == 1) {
+            //    TouristAttraction();
+            //}
+            //else if (opt == 2) {
+            //    TouristPlanning();
+            //}
+            //else {
+            //    TouristPlanning();
+            //    TouristAttraction();
+            //}
+        });
     })
 
 </script>

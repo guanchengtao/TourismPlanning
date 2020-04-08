@@ -32,5 +32,8 @@
     <property name="PublicInformationService" ref="PublicInformationService" />
   </object>
 
+  <object type="SDAU.GCT.OA.UI.Portal.Controllers.TouristPlanningController,SDAU.GCT.OA.UI.Portal" singleton="false" >
+    <property name="TouristPlanningService" ref="TouristPlanningService" />
+  </object>
 
 </objects>

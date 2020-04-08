@@ -43,6 +43,14 @@
           <Property Name="Remark" Type="nvarchar" MaxLength="500" />
           <Property Name="DelFlag" Type="int" />
         </EntityType>
+        <EntityType Name="R_Comment_PublicInfo">
+          <Key>
+            <PropertyRef Name="PublicInformation_Id" />
+            <PropertyRef Name="Comment_Id" />
+          </Key>
+          <Property Name="PublicInformation_Id" Type="int" Nullable="false" />
+          <Property Name="Comment_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="R_UserInfo_ActionInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -52,6 +60,17 @@
           <Property Name="DelFlag" Type="int" Nullable="false" />
           <Property Name="UserInfoId" Type="int" Nullable="false" />
           <Property Name="ActionInfoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReplyComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CommontId" Type="int" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="255" />
+          <Property Name="SubTime" Type="datetime" />
+          <Property Name="RecoveryPeople" Type="varchar" MaxLength="255" />
+          <Property Name="DelFlag" Type="int" />
         </EntityType>
         <EntityType Name="RoleInfo">
           <Key>
@@ -63,15 +82,47 @@
           <Property Name="Remark" Type="nvarchar" MaxLength="255" />
           <Property Name="DelFlag" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserComment">
+        <EntityType Name="TouristAttraction">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Content" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="SubTime" Type="datetime" Nullable="false" />
-          <Property Name="PlantInfoId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Introduce" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="10" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="10" />
+          <Property Name="MessageCount" Type="int" />
+          <Property Name="SubTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="Image" Type="nvarchar" MaxLength="1000" />
           <Property Name="DelFlag" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“TourismPlanning.dbo.TouristPlanning”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="TouristPlanning">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DelFlag" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Introduce" Type="nvarchar(max)" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="10" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlanLeader" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlanUnit" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlanTarget" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlanYears" Type="nvarchar" MaxLength="10" />
+          <Property Name="PlanArea" Type="nvarchar" MaxLength="10" />
+          <Property Name="MessageCount" Type="int" />
+          <Property Name="SubTime" Type="datetime" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="200" />
+          <Property Name="PlanImage" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DelFlag" Type="int" Nullable="false" />
+          <Property Name="BrowseTime" Type="int" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -92,6 +143,45 @@
           <Property Name="RoleInfo_Id" Type="int" Nullable="false" />
           <Property Name="UserInfo_Id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="VisitorComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="300" />
+          <Property Name="SubTime" Type="datetime" />
+          <Property Name="DelFlag" Type="int" />
+          <Property Name="VisitorId" Type="int" />
+          <Property Name="RecoveryState" Type="int" />
+          <Property Name="RecoveryTime" Type="datetime" />
+          <Property Name="RecoveryPeople" Type="varchar" MaxLength="255" />
+          <Property Name="Position" Type="varchar" MaxLength="255" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <Association Name="Comment_Id">
+          <End Role="VisitorComment" Type="Self.VisitorComment" Multiplicity="1" />
+          <End Role="R_Comment_PublicInfo" Type="Self.R_Comment_PublicInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitorComment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="R_Comment_PublicInfo">
+              <PropertyRef Name="Comment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CommontId">
+          <End Role="VisitorComment" Type="Self.VisitorComment" Multiplicity="1" />
+          <End Role="ReplyComment" Type="Self.ReplyComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitorComment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReplyComment">
+              <PropertyRef Name="CommontId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ActionInfoRoleInfo_ActionInfo">
           <End Role="ActionInfo" Type="Self.ActionInfo" Multiplicity="1" />
           <End Role="ActionInfoRoleInfo" Type="Self.ActionInfoRoleInfo" Multiplicity="*" />
@@ -164,15 +254,71 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="PublicInformation_Id">
+          <End Role="PublicInformation" Type="Self.PublicInformation" Multiplicity="1" />
+          <End Role="R_Comment_PublicInfo" Type="Self.R_Comment_PublicInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PublicInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="R_Comment_PublicInfo">
+              <PropertyRef Name="PublicInformation_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VisitorId">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+          <End Role="VisitorComment" Type="Self.VisitorComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VisitorComment">
+              <PropertyRef Name="VisitorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Model1StoreContainer">
           <EntitySet Name="ActionInfo" EntityType="Self.ActionInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActionInfoRoleInfo" EntityType="Self.ActionInfoRoleInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PublicInformation" EntityType="Self.PublicInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="R_Comment_PublicInfo" EntityType="Self.R_Comment_PublicInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="R_UserInfo_ActionInfo" EntityType="Self.R_UserInfo_ActionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReplyComment" EntityType="Self.ReplyComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleInfo" EntityType="Self.RoleInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserComment" EntityType="Self.UserComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristAttraction" EntityType="Self.TouristAttraction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfoRoleInfo" EntityType="Self.UserInfoRoleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VisitorComment" EntityType="Self.VisitorComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TouristPlanning" EntityType="Self.TouristPlanning" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TouristPlanning].[Id] AS [Id], 
+    [TouristPlanning].[Name] AS [Name], 
+    [TouristPlanning].[Introduce] AS [Introduce], 
+    [TouristPlanning].[Location] AS [Location], 
+    [TouristPlanning].[Longitude] AS [Longitude], 
+    [TouristPlanning].[Latitude] AS [Latitude], 
+    [TouristPlanning].[PlanLeader] AS [PlanLeader], 
+    [TouristPlanning].[PlanUnit] AS [PlanUnit], 
+    [TouristPlanning].[PlanTarget] AS [PlanTarget], 
+    [TouristPlanning].[PlanYears] AS [PlanYears], 
+    [TouristPlanning].[PlanArea] AS [PlanArea], 
+    [TouristPlanning].[MessageCount] AS [MessageCount], 
+    [TouristPlanning].[SubTime] AS [SubTime], 
+    [TouristPlanning].[Remark] AS [Remark], 
+    [TouristPlanning].[PlanImage] AS [PlanImage], 
+    [TouristPlanning].[DelFlag] AS [DelFlag], 
+    [TouristPlanning].[BrowseTime] AS [BrowseTime]
+    FROM [dbo].[TouristPlanning] AS [TouristPlanning]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Comment_Id" Association="Self.Comment_Id">
+            <End Role="VisitorComment" EntitySet="VisitorComment" />
+            <End Role="R_Comment_PublicInfo" EntitySet="R_Comment_PublicInfo" />
+          </AssociationSet>
+          <AssociationSet Name="CommontId" Association="Self.CommontId">
+            <End Role="VisitorComment" EntitySet="VisitorComment" />
+            <End Role="ReplyComment" EntitySet="ReplyComment" />
+          </AssociationSet>
           <AssociationSet Name="FK_ActionInfoRoleInfo_ActionInfo" Association="Self.FK_ActionInfoRoleInfo_ActionInfo">
             <End Role="ActionInfo" EntitySet="ActionInfo" />
             <End Role="ActionInfoRoleInfo" EntitySet="ActionInfoRoleInfo" />
@@ -197,6 +343,14 @@
             <End Role="UserInfo" EntitySet="UserInfo" />
             <End Role="UserInfoRoleInfo" EntitySet="UserInfoRoleInfo" />
           </AssociationSet>
+          <AssociationSet Name="PublicInformation_Id" Association="Self.PublicInformation_Id">
+            <End Role="PublicInformation" EntitySet="PublicInformation" />
+            <End Role="R_Comment_PublicInfo" EntitySet="R_Comment_PublicInfo" />
+          </AssociationSet>
+          <AssociationSet Name="VisitorId" Association="Self.VisitorId">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="VisitorComment" EntitySet="VisitorComment" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -207,7 +361,6 @@
           <EntitySet Name="PublicInformation" EntityType="Model1.PublicInformation" />
           <EntitySet Name="R_UserInfo_ActionInfo" EntityType="Model1.R_UserInfo_ActionInfo" />
           <EntitySet Name="RoleInfo" EntityType="Model1.RoleInfo" />
-          <EntitySet Name="UserComment" EntityType="Model1.UserComment" />
           <EntitySet Name="UserInfo" EntityType="Model1.UserInfo" />
           <AssociationSet Name="FK_R_UserInfo_ActionInfoActionInfo" Association="Model1.FK_R_UserInfo_ActionInfoActionInfo">
             <End Role="ActionInfo" EntitySet="ActionInfo" />
@@ -224,6 +377,22 @@
           <AssociationSet Name="UserInfoRoleInfo" Association="Model1.UserInfoRoleInfo">
             <End Role="RoleInfo" EntitySet="RoleInfo" />
             <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <EntitySet Name="TouristAttraction" EntityType="Model1.TouristAttraction" />
+          <EntitySet Name="TouristPlanning" EntityType="Model1.TouristPlanning" />
+          <EntitySet Name="VisitorComment" EntityType="Model1.VisitorComment" />
+          <EntitySet Name="ReplyComment" EntityType="Model1.ReplyComment" />
+          <AssociationSet Name="CommontId" Association="Model1.CommontId">
+            <End Role="VisitorComment" EntitySet="VisitorComment" />
+            <End Role="ReplyComment" EntitySet="ReplyComment" />
+          </AssociationSet>
+          <AssociationSet Name="VisitorId" Association="Model1.VisitorId">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="VisitorComment" EntitySet="VisitorComment" />
+          </AssociationSet>
+          <AssociationSet Name="R_Comment_PublicInfo" Association="Model1.R_Comment_PublicInfo">
+            <End Role="VisitorComment" EntitySet="VisitorComment" />
+            <End Role="PublicInformation" EntitySet="PublicInformation" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ActionInfo">
@@ -257,6 +426,7 @@
           <Property Name="Author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DelFlag" Type="Int32" />
+          <NavigationProperty Name="VisitorComment" Relationship="Model1.R_Comment_PublicInfo" FromRole="PublicInformation" ToRole="VisitorComment" />
         </EntityType>
         <EntityType Name="R_UserInfo_ActionInfo">
           <Key>
@@ -282,16 +452,6 @@
           <NavigationProperty Name="ActionInfo" Relationship="Model1.ActionInfoRoleInfo" FromRole="RoleInfo" ToRole="ActionInfo" />
           <NavigationProperty Name="UserInfo" Relationship="Model1.UserInfoRoleInfo" FromRole="RoleInfo" ToRole="UserInfo" />
         </EntityType>
-        <EntityType Name="UserComment">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Content" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PlantInfoId" Type="Int32" Nullable="false" />
-          <Property Name="DelFlag" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -304,6 +464,7 @@
           <Property Name="SubTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="R_UserInfo_ActionInfo" Relationship="Model1.FK_UserInfoR_UserInfo_ActionInfo" FromRole="UserInfo" ToRole="R_UserInfo_ActionInfo" />
           <NavigationProperty Name="RoleInfo" Relationship="Model1.UserInfoRoleInfo" FromRole="UserInfo" ToRole="RoleInfo" />
+          <NavigationProperty Name="VisitorComment" Relationship="Model1.VisitorId" FromRole="UserInfo" ToRole="VisitorComment" />
         </EntityType>
         <Association Name="FK_R_UserInfo_ActionInfoActionInfo">
           <End Type="Model1.ActionInfo" Role="ActionInfo" Multiplicity="1" />
@@ -336,6 +497,104 @@
         <Association Name="UserInfoRoleInfo">
           <End Type="Model1.RoleInfo" Role="RoleInfo" Multiplicity="*" />
           <End Type="Model1.UserInfo" Role="UserInfo" Multiplicity="*" />
+        </Association>
+        <EntityType Name="TouristAttraction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Introduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MessageCount" Type="Int32" />
+          <Property Name="SubTime" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TouristPlanning">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="DelFlag" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Introduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlanLeader" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlanUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlanTarget" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlanYears" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PlanArea" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MessageCount" Type="Int32" />
+          <Property Name="SubTime" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PlanImage" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DelFlag" Type="Int32" Nullable="false" />
+          <Property Name="BrowseTime" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VisitorComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="SubTime" Type="DateTime" Precision="3" />
+          <Property Name="DelFlag" Type="Int32" />
+          <Property Name="RecoveryState" Type="Int32" />
+          <Property Name="RecoveryTime" Type="DateTime" Precision="3" />
+          <Property Name="RecoveryPeople" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VisitorId" Type="Int32" />
+          <Property Name="State" Type="Int32" />
+          <NavigationProperty Name="ReplyComment" Relationship="Model1.CommontId" FromRole="VisitorComment" ToRole="ReplyComment" />
+          <NavigationProperty Name="UserInfo" Relationship="Model1.VisitorId" FromRole="VisitorComment" ToRole="UserInfo" />
+          <NavigationProperty Name="PublicInformation" Relationship="Model1.R_Comment_PublicInfo" FromRole="VisitorComment" ToRole="PublicInformation" />
+        </EntityType>
+        <EntityType Name="ReplyComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CommontId" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SubTime" Type="DateTime" Precision="3" />
+          <Property Name="RecoveryPeople" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DelFlag" Type="Int32" />
+          <NavigationProperty Name="VisitorComment" Relationship="Model1.CommontId" FromRole="ReplyComment" ToRole="VisitorComment" />
+        </EntityType>
+        <Association Name="CommontId">
+          <End Type="Model1.VisitorComment" Role="VisitorComment" Multiplicity="1" />
+          <End Type="Model1.ReplyComment" Role="ReplyComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VisitorComment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReplyComment">
+              <PropertyRef Name="CommontId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VisitorId">
+          <End Type="Model1.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <End Type="Model1.VisitorComment" Role="VisitorComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VisitorComment">
+              <PropertyRef Name="VisitorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_Comment_PublicInfo">
+          <End Type="Model1.VisitorComment" Role="VisitorComment" Multiplicity="*" />
+          <End Type="Model1.PublicInformation" Role="PublicInformation" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -399,17 +658,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserComment">
-            <EntityTypeMapping TypeName="Model1.UserComment">
-              <MappingFragment StoreEntitySet="UserComment">
-                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
-                <ScalarProperty Name="PlantInfoId" ColumnName="PlantInfoId" />
-                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserInfo">
             <EntityTypeMapping TypeName="Model1.UserInfo">
               <MappingFragment StoreEntitySet="UserInfo">
@@ -436,6 +684,82 @@
             </EndProperty>
             <EndProperty Name="RoleInfo">
               <ScalarProperty Name="Id" ColumnName="RoleInfo_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="TouristAttraction">
+            <EntityTypeMapping TypeName="Model1.TouristAttraction">
+              <MappingFragment StoreEntitySet="TouristAttraction">
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="MessageCount" ColumnName="MessageCount" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Introduce" ColumnName="Introduce" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouristPlanning">
+            <EntityTypeMapping TypeName="Model1.TouristPlanning">
+              <MappingFragment StoreEntitySet="TouristPlanning">
+                <ScalarProperty Name="BrowseTime" ColumnName="BrowseTime" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="PlanImage" ColumnName="PlanImage" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="MessageCount" ColumnName="MessageCount" />
+                <ScalarProperty Name="PlanArea" ColumnName="PlanArea" />
+                <ScalarProperty Name="PlanYears" ColumnName="PlanYears" />
+                <ScalarProperty Name="PlanTarget" ColumnName="PlanTarget" />
+                <ScalarProperty Name="PlanUnit" ColumnName="PlanUnit" />
+                <ScalarProperty Name="PlanLeader" ColumnName="PlanLeader" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Introduce" ColumnName="Introduce" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VisitorComment">
+            <EntityTypeMapping TypeName="Model1.VisitorComment">
+              <MappingFragment StoreEntitySet="VisitorComment">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="VisitorId" ColumnName="VisitorId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="RecoveryPeople" ColumnName="RecoveryPeople" />
+                <ScalarProperty Name="RecoveryTime" ColumnName="RecoveryTime" />
+                <ScalarProperty Name="RecoveryState" ColumnName="RecoveryState" />
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyComment">
+            <EntityTypeMapping TypeName="Model1.ReplyComment">
+              <MappingFragment StoreEntitySet="ReplyComment">
+                <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+                <ScalarProperty Name="RecoveryPeople" ColumnName="RecoveryPeople" />
+                <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CommontId" ColumnName="CommontId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="R_Comment_PublicInfo" TypeName="Model1.R_Comment_PublicInfo" StoreEntitySet="R_Comment_PublicInfo">
+            <EndProperty Name="PublicInformation">
+              <ScalarProperty Name="Id" ColumnName="PublicInformation_Id" />
+            </EndProperty>
+            <EndProperty Name="VisitorComment">
+              <ScalarProperty Name="Id" ColumnName="Comment_Id" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

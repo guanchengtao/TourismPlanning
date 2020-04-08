@@ -1,0 +1,2 @@
+[14][2020-04-07 21:13:40,863][INFO ][Mr.G] Content:[PublicInformation]-[GetPubicInformation],÷¥––£∫32ms,‰÷»æ£∫1ms,[::1],[Chrome80]
+[14][2020-04-07 21:14:15,437][INFO ][Mr.G] Content:[PublicInformation]-[GetPubicInformationById],÷¥––£∫129ms,‰÷»æ£∫0ms,[::1],[Chrome80]

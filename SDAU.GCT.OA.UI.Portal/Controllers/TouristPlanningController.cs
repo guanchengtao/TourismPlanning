@@ -1,5 +1,4 @@
-﻿
-using SDAU.GCT.OA.BLL;
+﻿using SDAU.GCT.OA.BLL;
 using SDAU.GCT.OA.Common;
 using SDAU.GCT.OA.IBLL;
 using SDAU.GCT.OA.Model;
@@ -16,19 +15,19 @@ using System.Web.Mvc;
 namespace SDAU.GCT.OA.UI.Portal.Controllers
 {
     [TimingActionFilter]
-    public class PublicInformationController : Controller
+    public class TouristPlanningController : Controller
     {
-        public IPublicInformationService PublicInformationService { get; set; }
+        public ITouristPlanningService TouristPlanningService { get; set; }
        
         [HttpGet]
-        public ActionResult GetPubicInformation(int page, int limit, string keyword = "")
+        public ActionResult GetTourismPlanning(int page, int limit, string keyword = "")
         {
 
-            var dataObj = PublicInformationService.GetEntities(u => u.DelFlag == 1);
-            var data = new List<PublicInformation>();
+            var dataObj = TouristPlanningService.GetEntities(u => u.DelFlag == 1);
+            var data = new List<TouristPlanning>();
             if (keyword.Length > 0)
             {
-                data = dataObj.Where(x => x.Title.Contains(keyword)|| x.Author.Contains( keyword )|| x.SubUnit .Contains( keyword)).ToList();
+                data = dataObj.Where(x => x.Name.Contains(keyword)|| x.PlanLeader.Contains( keyword )|| x.PlanUnit .Contains( keyword)).ToList();
             }
             else
             {
@@ -37,21 +36,29 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             var res = data
             .OrderByDescending(x => x.SubTime)
             .Take(limit * page).Skip(limit * (page - 1)).ToList();//进行分页
-            var result = new List<PublicInformationDTO>();
+            var result = new List<TouristPlanningDTO>();
             
             foreach (var item in res)
             {
-                var info = new PublicInformationDTO
+                var info = new TouristPlanningDTO
                 {
                     Id = item.Id,
-                    Title = item.Title,
-                    Content = Server.HtmlDecode(item.Content),
+                    Name = item.Name,
+                    Introduce = Server.HtmlDecode(item.Introduce),
                     SubTime = TimeFormatter.TimeFormat(item.SubTime.ToString()),
-                    SubUnit = item.SubUnit,
-                    Author = item.Author,
+                    PlanUnit = item.PlanUnit,
+                    PlanLeader = item.PlanLeader,
                     BrowseTime =item.BrowseTime ?? 0,
                     Remark = item.Remark,
-                    Type = GetInfoType(item.Type ?? 0)
+                    Latitude=item.Latitude,
+                    Longitude=item.Longitude,
+                    Location=item.Location,
+                    MessageCount=item.MessageCount ?? 0,
+                    PlanArea=item.PlanArea,
+                    PlanImage=item.PlanImage,
+                    PlanTarget=item.PlanTarget,
+                    PlanYears=item.PlanYears
+                  //  Type = GetInfoType(item.Type ?? 0)
                 };
                 result.Add(info);
             }
@@ -64,29 +71,35 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
-        [HttpGet]
-        public ActionResult GetPubicInformationByType(int page, int limit, int type)
+
+        public ActionResult GetALLTourismPlanning()
         {
 
-            var dataObj = PublicInformationService.GetEntities(u => u.DelFlag == 1 && u.Type == type);
-            var data = dataObj
-            .OrderByDescending(x => x.SubTime)
-            .Take(limit * page).Skip(limit * (page - 1)).ToList();//进行分页
-            var result = new List<PublicInformationDTO>();
+            var dataObj = TouristPlanningService.GetEntities(u => u.DelFlag == 1);
+            var res = dataObj.OrderByDescending(x => x.SubTime).ToList();
+            var result = new List<TouristPlanningDTO>();
 
-            foreach (var item in data)
+            foreach (var item in res)
             {
-                var info = new PublicInformationDTO
+                var info = new TouristPlanningDTO
                 {
                     Id = item.Id,
-                    Title = item.Title,
-                    Content = Server.HtmlDecode(item.Content),
+                    Name = item.Name,
+                    Introduce = Server.HtmlDecode(item.Introduce),
                     SubTime = TimeFormatter.TimeFormat(item.SubTime.ToString()),
-                    SubUnit = item.SubUnit,
-                    Author = item.Author,
+                    PlanUnit = item.PlanUnit,
+                    PlanLeader = item.PlanLeader,
                     BrowseTime = item.BrowseTime ?? 0,
                     Remark = item.Remark,
-                    Type = GetInfoType(item.Type ?? 0)
+                    Latitude = item.Latitude,
+                    Longitude = item.Longitude,
+                    Location = item.Location,
+                    MessageCount = item.MessageCount ?? 0,
+                    PlanArea = item.PlanArea,
+                    PlanImage = item.PlanImage,
+                    PlanTarget = item.PlanTarget,
+                    PlanYears = item.PlanYears
+                    //  Type = GetInfoType(item.Type ?? 0)
                 };
                 result.Add(info);
             }
@@ -94,29 +107,30 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             {
                 msg = string.Empty,
                 code = Status.success,
-                count = dataObj.Count(),
+                count = result.Count(),
                 data = result
             };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
         }
 
+
         [HttpGet]
         public ActionResult GetPubicInformationById(int Id)
         {
             var info = new PublicInformationDTO();
-            var dataObjs = PublicInformationService.GetEntities(u => u.Id == Id && u.DelFlag == 1);
+            var dataObjs = TouristPlanningService.GetEntities(u => u.Id == Id && u.DelFlag == 1);
             if(dataObjs != null &&dataObjs.Count() > 0)
             {
                 var dataObj = dataObjs.FirstOrDefault();
-                info.Id = dataObj.Id;
-                info.Title = dataObj.Title;
-                info.Content = Server.HtmlDecode(dataObj.Content);
-                info.SubTime = TimeFormatter.TimeFormat(dataObj.SubTime.ToString());
-                info.SubUnit = dataObj.SubUnit;
-                info.Author = dataObj.Author;
-                info.BrowseTime = dataObj.BrowseTime ??0;
-                info.Remark = dataObj.Remark;
-                info.Type = GetInfoType(dataObj.Type ?? 0);
+                //info.Id = dataObj.Id;
+                //info.Title = dataObj.Title;
+                //info.Content = Server.HtmlDecode(dataObj.Content);
+                //info.SubTime = TimeFormatter.TimeFormat(dataObj.SubTime.ToString());
+                //info.SubUnit = dataObj.SubUnit;
+                //info.Author = dataObj.Author;
+                //info.BrowseTime = dataObj.BrowseTime ??0;
+                //info.Remark = dataObj.Remark;
+                //info.Type = GetInfoType(dataObj.Type ?? 0);
                 var jsondata = new
                 {
                     code = Status.success,
@@ -171,10 +185,10 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
             publicInformation.Remark = string.Empty;
             //string content = Server.HtmlEncode(form["content"]);
             publicInformation.DelFlag = 1;
-            if (ModelState.IsValid)
-            {
-                PublicInformationService.Add(publicInformation);
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    TouristPlanningService.Add(publicInformation);
+            //}
             var jsondata = new { Status.code };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
 
@@ -184,18 +198,18 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         [ValidateInput(false)]
         public ActionResult EditPublicInfo(PublicInformationDTO publicInfomationdto)
         {
-            var publicInformation = PublicInformationService.GetEntities(x => x.Id ==
+            var publicInformation = TouristPlanningService.GetEntities(x => x.Id ==
             publicInfomationdto.Id && x.DelFlag == 1).FirstOrDefault() ;
-            publicInformation.Title = publicInfomationdto.Title;
-            publicInformation.Type = Int32.Parse(publicInfomationdto.Type);
-            publicInformation.Content = Server.HtmlEncode(publicInfomationdto.Content);
-            publicInformation.SubUnit = publicInfomationdto.SubUnit;
-            publicInformation.Author = publicInfomationdto.Author;
-            publicInformation.Remark = string.Empty;
+            //publicInformation.Title = publicInfomationdto.Title;
+            //publicInformation.Type = Int32.Parse(publicInfomationdto.Type);
+            //publicInformation.Content = Server.HtmlEncode(publicInfomationdto.Content);
+            //publicInformation.SubUnit = publicInfomationdto.SubUnit;
+            //publicInformation.Author = publicInfomationdto.Author;
+            //publicInformation.Remark = string.Empty;
             //string content = Server.HtmlEncode(form["content"]);
             if (ModelState.IsValid)
             {
-                PublicInformationService.Update(publicInformation);
+                TouristPlanningService.Update(publicInformation);
             }
             var jsondata = new { Status.code };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
@@ -230,26 +244,11 @@ namespace SDAU.GCT.OA.UI.Portal.Controllers
         public ActionResult DeletePublicInfo(int Id)
         {
 
-            PublicInformationService.DeleteSingle(Id);
+            TouristPlanningService.DeleteSingle(Id);
 
             var jsondata = new { Status.code };
             return Json(jsondata, JsonRequestBehavior.AllowGet);
 
         }
-
-       
-        //[HttpPost]
-        //public ActionResult DeleteMultiple(List<int> ids)
-        //{
-        //    UserInfoService.DeleteMultiple(ids);
-        //    var jsondata = new { count = ids.Count(), Status.code };
-        //    return Json(jsondata, JsonRequestBehavior.AllowGet);
-        //}
-
-    }
-    class ImageModel
-    {
-        public string src { get; set; }
-        public string title { get; set; }
     }
 }
