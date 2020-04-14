@@ -95,26 +95,19 @@
                 }]
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
-                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
+                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：',templet: function(d){
+                        if (d.Id <= 9) {
+                            return '<p>C_000' + d.Id + '</p>'
+                        }
+                        else {
+                               return '<p>C_00'+ d.Id +'</p>'
+                        }
+                    } }
                     , { field: 'Visitor', title: '游客', width: 120 }
                     , { field: 'Comment', title: '内容', width: 420 }
                     , { field: 'SubTime', title: '发布时间', width: 200 }
                     , { fixed: '', title: '操作', toolbar: '#barDemo', width: 200 }
                 ]]
-                /*
-                ,response: {
-                  statusName: 'status'
-                  ,statusCode: 200
-                }
-                ,parseData: function(res){
-                  return {
-                    "status": res.status
-                    ,"msg": res.message
-                    ,"count": res.total
-                    ,"data": res.data.list
-                  };
-                }
-                */
             });
 
             //工具栏事件

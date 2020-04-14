@@ -208,7 +208,9 @@ layui.use('table', function(){
     }]
     ,cols: [[
       {type: 'checkbox', fixed: 'left'}
-      ,{field:'id', title:'ID', width:80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：'}
+        , {
+            field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：',
+        }
       ,{field:'username', title:'用户名', width:120, edit: 'text', templet: '#usernameTpl'}
       ,{field:'email', title:'邮箱', hide: 0, width:150, edit: 'text', templet: function(d){
         return '<em>'+ d.email +'</em>'

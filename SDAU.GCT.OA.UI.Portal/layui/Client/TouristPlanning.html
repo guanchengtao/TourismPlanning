@@ -90,9 +90,24 @@
                 }]
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
-                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
+                    , {
+                        field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：', templet: function (d) {
+                            if (d.Id <= 9) {
+                                return '<p>P_000' + d.Id + '</p>'
+                            }
+                            else {
+                                return '<p>P_00'+ d.Id +'</p>'
+                                }
+               } }
                     , { field: 'Name', title: '规划名称', width: 120 }
-                    , { field: 'PlanLeader', title: '负责人', width: 120 }
+                    , { field: 'PlanLeader', title: '负责人', width: 120, templet: function (d) {
+                            if (d.Id % 2 == 1) {
+                                return '<p>苏大强</p>'
+                            }
+                            else {
+                                return '<p>佟湘玉</p>'
+                                }
+               } }
                     , { field: 'PlanArea', title: '规划区域', width: 120 }
                     , { field: 'PlanTarget', title: '规划目标', width: 120 }
                     , { field: 'PlanYears', title: '规划年限', width: 120 }

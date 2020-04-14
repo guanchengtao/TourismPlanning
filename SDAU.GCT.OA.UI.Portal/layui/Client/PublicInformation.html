@@ -88,7 +88,9 @@
                 }]
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
-                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
+                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：', templet: function(d){
+        return '<p>I_000'+ d.Id +'</p>'
+      } }
                     , { field: 'Title', title: '标题', width: 150 }
                     , { field: 'Author', title: '发布人', width: 120 }
                     , { field: 'SubUnit', title: '发布单位', width: 120 }

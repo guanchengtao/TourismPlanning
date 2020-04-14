@@ -123,63 +123,54 @@ function mapInit() {
     mymap.setMode("dragzoom");
 
     
-    ////添加比例尺到地图 
-    //$.getJSON("../Admin/ashx/JingDianList.ashx", {}, function (data) {
-    //    var gisdata = data.jingdianList;
-    //    $.each(gisdata, function (index, n) {
-    //        gisdata[index].JDJieShao = unescape(gisdata[index].JDJieShao);
-    //        gisdata[index].JDJieShao = gisdata[index].JDJieShao.substring(-1, 270)+"...";
-    //        //if (gisdata[index].JDJieShao.length < 60) {
-
-    //        //    gisdata[index].JDJieShao = gisdata[index].JDJieShao + ' <input type = "button" value = "景点反馈" onclick = "lyjd_view(\'' + gisdata[index].JDBianHao + '\')" />';
-    //        //}
-    //        //else {
-    //        //    gisdata[index].JDJieShao = gisdata[index].JDJieShao.substring(-1, 100) + '<input type ="button" value ="景点反馈" onclick ="lyjd_view(\'' + gisdata[index].JDBianHao + '\')" />';
-    //        //} 
-    //        gisdata[index].TuPian = unescape(gisdata[index].TuPian);
-    //    });
-    //    for (var i = 0; i < data.jingdianCount; i++) {
-    //        var marker = new NMarker(new NXY(gisdata[i].JingDu, gisdata[i].WeiDu),
-    //            { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao });
-    //        marker.setDialog("<div style ='margin:0px;' > " +
-    //            "<div style='margin:10px 10px; '>" +
-    //            "<img style='float:left;margin:0px 10px' width='100' height='80' title='' " + gisdata[i].TuPian + "+/>" +
-    //            "  <div style='margin:0px 0px 0px 120px;width:170px;height:auto'>景点名称:" + gisdata[i].JDMingCheng + "<br>景点简介:" + gisdata[i].JDJieShao+ "<span style='width:169px'></span></div>" +
-    //            "</div>" +
-    //            '<input type="button" value="景点反馈" onclick="jdComment(\'' + gisdata[i].JDBianHao + '\')"/>&nbsp;' +
-    //            '<input type="button" value="了解更多" onclick="lyjd_view(\'' + gisdata[i].JDBianHao + '\')"/>&nbsp;' +
-    //            '<input type="button" value="采摘节" onclick="gkxx_view(3253)"/>&nbsp;' +
-    //            '<input type="button" value="名人风采" onclick="gkxx_view(5252)"/>&nbsp;' +
-    //            "</div>");
-    //        //标注添加到地图  
-    //        mymap.addOverlays(marker);  
-    //    }
-    //});
-
-    $.getJSON("../Admin/ashx/LvYouGuiHuaList.ashx", {}, function (data) {
-        var gisdata = data.list;
-        for (var i = 0; i < data.Count; i++) {
-            var markerOptions = {
-                imgUrl: "../../wodetupian/marker_red.png",
-                markerTitle: gisdata[i].GHXMMingCheng,
-                assignId: gisdata[i].GHXMBianHao
-            }
-            var marker = new NMarker(new NXY(gisdata[i].JingDu, gisdata[i].WeiDu), markerOptions);
+    $.getJSON("../../TouristPlanning/GetALLTourismPlanning", {}, function (data) {
+        console.log(data);
+        var gisdata = data.data;
+        for (var i = 0; i < data.count; i++) {
+            var marker = new NMarker(new NXY(gisdata[i].Longitude, gisdata[i].Latitude), { markerTitle: gisdata[i].JDMingCheng, assignId: gisdata[i].JDBianHao, imgUrl: "../../map/images/marker_red.png" });
             marker.setDialog("<div style ='margin:0px;' > " +
                 "<div style='margin:10px 10px; '>" +
-                "  <div style='margin:0px 0px 0px 0;width:170px;height:auto'>规划编号:" + gisdata[i].GHXMBianHao + "<br>规划名称:" + gisdata[i].GHXMMingCheng + "<span style='width:169px'></span></div>" +
+
+                "  <div style='width:200px;height:auto'>规划名称:" + gisdata[i].Name +
+                "<br>规划年限:" + gisdata[i].PlanYears +
+                "<br>负责人:" + gisdata[i].PlanLeader +
+                "<span style='width:169px'></span></div>" +
                 "</div>" +
-                '<input type="button" value="留言" onclick="ghComment(\'' + gisdata[i].GHXMBianHao + '\')"/>&nbsp;&nbsp;' +
-                '<input type="button" value="查看详情" onclick="ghView(\'' + gisdata[i].GHXMBianHao + '\')"/>' +
+                "&nbsp;&nbsp;<input type='button' name='delete' value ='查看' id ='view' onclick=view(" + gisdata[i].Id + ") />" +
+                "&nbsp;&nbsp;<input type='button' name='delete' value ='我要留言' id ='edit' onclick=edit(" + gisdata[i].Id + ") />" +
+                "&nbsp;&nbsp;<input type='button' name='delete' value ='收藏' id ='delete' onclick=delete1(" + gisdata[i].Id + ") />" +
+                "&nbsp;&nbsp;<input type='button' name='delete' value ='举报' id ='delete' onclick=delete1(" + gisdata[i].Id + ") />" +
+                "</div>");
+            //标注添加到地图
+            mymap.addOverlays(marker);
+        }
+    });
+
+    $.getJSON("../layui/json/TouristAttractionListMap.json", {}, function (data) {
+        console.log(data);
+        var gisdata = data.data;
+        for (var i = 0; i < data.count; i++) {
+            var marker = new NMarker(new NXY(gisdata[i].Longitude, gisdata[i].Latitude), { markerTitle: gisdata[i].Name, assignId: gisdata[i].Id });
+            marker.setDialog("<div style ='margin:0px;' > " +
+                "<div style='margin:10px 10px; '>" +
+                //"<img style='float:left;margin:0px 10px' width='100' height='80' src='" + gisdata[i].Image + "+/>" +
+                "<img style='float:left;margin:0px 10px' width='100' height='80' src=" + gisdata[i].Image + ">" +
+
+                "<div style='margin:0px 0px 0px 120px;width:170px;height:auto'>景点名称:" + gisdata[i].Name +
+                "<br>景点简介: " + gisdata[i].Introduce + " <span style = 'width:170px' ></span ></div >" +
+                "</div>" +
+                "<button class='layui-btn layui-btn-xs' style='margin-top: 5px; margin-bottom: 5px'>查看</button>" +
+                "<button class='layui-btn layui-btn-xs' style='margin-top: 5px; margin-bottom: 5px'>我要留言</button>&nbsp;" +
+                "<button class='layui-btn layui-btn-xs' style='margin-top: 5px; margin-bottom: 5px'>收藏</button>" +
                 "</div>");
             //标注添加到地图  
             mymap.addOverlays(marker);
-        }        
+        }
     });
     $("#vec_").click(showVector);
 		$("#img_").click(showRaster);
 };  
-function ghView(id) {
+function view(id) {
     $.getJSON("../Admin/ashx/GetlyghInfo.ashx", { id: id }, function (data) {
         $("#GHXMBianHao").text(data.GHXMBianHao);
         $("#GHXMMingCheng").text(data.GHXMMingCheng);
@@ -198,7 +189,6 @@ function ghView(id) {
     })
     if ($("#centerlist2").is(":hidden")) {
         $("#centerlist2").show("slow");
-        console.log("s");
         dragging("centerlist2");
     }
 }
@@ -226,21 +216,7 @@ function ghComment(id) {
         $("#hudongjiaoliu").show("slow");
     }
 }
-function JDedit(id) {
-    alert("edit");
-}
-function JDdelete(id) {
-    if (confirm("您确定删除此条记录？")) {
-        if (true) {
-            $.post("../Admin/ashx/DeleteData.ashx", { str: id + ",", action: "xinxi" }, function (date) {
-                if (date == "ok") {
-                    alert("删除成功！");
-                    window.location.reload();
-                }
-            })
-        }
-    }
-}
+
 function showRaster()
 {
 	$("#vec_").removeClass("active");

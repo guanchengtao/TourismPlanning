@@ -3,14 +3,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <title>王打卦镇旅游规划展示与监管系统</title>
-    <script src="jsAPI/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../map/jsAPI/jquery/jquery-3.3.1.min.js"></script>
     <link href="css/index.css" rel="stylesheet" type="text/css">
     <link href="jsAPI/newmap.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="jsAPI/NewMap.js"></script>
     <script type="text/javascript" src="jsAPI/NExtWMTSLayer.js"></script>
-    <script type="text/javascript" src="jsAPI/map.js"></script>
+    <script type="text/javascript" src="../js/map.js"></script>
     <link href="css/gkxxview.css" rel="stylesheet" />
     <link href="css/lyghview.css" rel="stylesheet" />
+    <link href="../layui/src/css/layui.css" rel="stylesheet" />
     <script>
         $(function () {
             $("#comment").val("");
@@ -231,12 +232,12 @@
 
 
     <!--旅游规划详情页-->
-    <div id="centerlist2">
+    <div id="centerlist2" style="margin-bottom:50px;height:600px">
 
-        <div id="closecenterList2">
-            <img id="centerlistClosebtn2" src="images/close.png" onclick="closecenterlist2()" />
+        <div id="closecenterList2" style="margin-top:-35px">
+            <img  id="centerlistClosebtn2" src="images/close.png" onclick="closecenterlist2()" />
         </div>
-        <div id="lefttable">
+      <div id="lefttable" style="margin-top:-35px">
             <table style="height: 262px; width: 700px">
                 <caption>
                     <h1 style="font-size:16px">
@@ -246,51 +247,84 @@
                 <tr>
 
                     <td class="auto-style4">项目编号</td>
-                    <td class="info_input" id="GHXMBianHao"></td>
+                    <td class="info_input" id="GHXMBianHao">P_0001</td>
                     <td class="auto-style4">项目名称</td>
-                    <td class="info_input" id="GHXMMingCheng"></td>
+                    <td class="info_input" id="GHXMMingCheng">康熙探花花园一期规划</td>
                 </tr>
                 <tr>
                     <td class="auto-style4">负责人</td>
-                    <td class="info_input" id="FuZeRen"></td>
+                    <td class="info_input" id="FuZeRen">李大强</td>
                     <td class="auto-style4">规划单位</td>
-                    <td class="info_input" id="GuiHuaDanWei"></td>
+                    <td class="info_input" id="GuiHuaDanWei">王打卦旅游办</td>
                 </tr>
                 <tr>
                     <td class="auto-style4">规划时间</td>
-                    <td class="info_input" id="GuiHuaShiJian"></td>
+                    <td class="info_input" id="GuiHuaShiJian">2020.04.01</td>
                     <td class="auto-style4">规划年限</td>
-                    <td class="info_input" id="GuiHuaNianXian"></td>
+                    <td class="info_input" id="GuiHuaNianXian">2020.04.01 - 2020.09.30</td>
                 </tr>
                 <tr>
                     <td class="auto-style4">规划范围</td>
-                    <td class="info_input" id="GuiHuaFanWei"></td>
+                    <td class="info_input" id="GuiHuaFanWei">康熙探花花园东北角</td>
                     <td class="auto-style4">规划面积</td>
-                    <td class="info_input" id="GuiHuaMianJi"></td>
+                    <td class="info_input" id="GuiHuaMianJi">4000亩</td>
                 </tr>
                 <tr>
-                    <td class="auto-style6">规划目标</td>
+                    <td class="auto-style6">规划时间轴</td>
                     <td colspan="3">
-                        <textarea readonly="readonly" id="GuiHuaMuBiao" cols="20" rows="4" style="height:90px;width:600px;background-color:white;cursor:text"></textarea>
+                        <ul class="layui-timeline" style="text-align:left">
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style6">规划任务</td>
-                    <td colspan="3">
-                        <textarea readonly="readonly" id="GuiHuaRenWu" cols="20" rows="2" style="height:90px;width:600px;background-color:white;"></textarea>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis"></i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">9月30日</h3>
+            <b>
+                康熙探花花园一期规划整造完成
+            </b>
+                <ul>
+                    <li>这次规划，新建省级景点5个，改造70%的旧景点。</li>
+                    <li> 很多建筑旁边加了中英文解释，更好的服务了外国来的游客朋友。</li>
+                    <li> 借此机遇平原县将努力打造成为京津冀鲁的“后花园”及优质农产品供应基地。</li>
+                </ul>
+           
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis"></i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">7月01日</h3>
+            <b>倒数第二个节点，再有一个月就可以完成了</b>
+            <ul>
+                <li>借新时期国家三大重要战略之一的京津冀协同发展战略。</li>
+                <li> 将德州地区纳入京津冀协同发展，为平原县的发展带来了新的机遇。</li>
+                <li> 借此机遇平原县将努力打造成为京津冀鲁的“后花园”及优质农产品供应基地。</li>
+            </ul>
+        </div>
+    </li>
+    <li class="layui-timeline-item">
+        <i class="layui-icon layui-timeline-axis"></i>
+        <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">7月20日</h3>
+            <b>
+                完成80%的施工任务，在保证游客安全的情况下，逐步开放
+            </b>
+                <ul>
+                    <li>花园村梨树种植历史久远，现村东南仍存有数百年的梨树几十株。</li>
+                    <li>园林中的“梨树始祖”现在还是枝繁叶茂，经省果树研究所的专家推测，树龄至少有150多年了。</li>
+                  
+                </ul>
+           
+        </div>
+    </li>
 
+
+</ul>
                     </td>
                 </tr>
-                <tr style="height:170px">
-                    <td class="auto-style5">规划项目介绍</td>
-                    <td colspan="3">
-                        <textarea readonly="readonly" id="GHXMJieShao" cols="200" rows="20" style="height:170px;width:600px;background-color:white;cursor:text"></textarea>
-                    </td>
-                </tr>
+             
 
             </table>
-            <div id="guihautudiv"></div>
+          
         </div>
     </div>
 
@@ -329,21 +363,21 @@
     overflow-y:scroll">
             <textarea placeholder="请在此留言..." style="font-size:medium;max-height:300px;max-width:482px;min-height:78px;min-width:372px" id="comment" name="" rows="5" cols="55"></textarea>
             <input type="button" name="btnSub" id="btnSub" value="提交" style="margin:3px 10px 0 0;float:right;width:100px;font-size:large;color:blue" />
-            <span style="float:left;margin:2px 0 0 2px">注：您的留言将以匿名的方式发表！</span>
+            <!--<span style="float:left;margin:2px 0 0 2px">注：您的留言将以匿名的方式发表！</span>-->
             <span style="float:left;margin:22px 0 0 -193px;font-size:large;color:black">留言区:</span>
-            <div id="commentList" style="margin:50px 0 0 0">
+            <div id="commentList" style="margin:35px 0 0 0">
             </div>
-            <div class="pagination-nick" style="height:390px; float:right;margin:10px 20px 0 0 "></div>
-            <script src="jsAPI/comment_page.js"></script>
+            <div class="pagination-nick" style="height:560px; float:right;margin:10px 20px 0 0 "></div>
+            <script src="../js/comment_page.js"></script>
         </div>
     </div>
 
     <!--小悬浮菜单div-->
     <nav style="position: absolute; bottom:5px; left: 100px; opacity:1;" id="markerMenu">
         <nav>
-            <img src="../wodetupian/marker_red.png" />
+            <img src="../map/images/marker_red.png" />
             <span style="color:green;">旅游规划</span>
-            <img src="../wodetupian/marker.png" />
+            <img src="../map/images/marker.png" />
             <span style="color:green">旅游景点</span>
         </nav>
     </nav>

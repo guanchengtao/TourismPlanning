@@ -88,7 +88,9 @@
                 }]
                 , cols: [[
                     { type: 'checkbox', fixed: 'left' }
-                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：' }
+                    , { field: 'Id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true, totalRowText: '合计：',templet: function(d){
+                         return '<p>T_000'+ d.Id +'</p>'
+                    } },
                     , { field: 'Name', title: '景点名称', width: 120 }
                     , { field: 'Location', title: '位置', width: 120 }
                     , { field: 'LongitudeAndLatitude', title: '经纬度', width: 220 }

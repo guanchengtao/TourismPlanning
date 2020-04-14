@@ -21,8 +21,8 @@
             function goPage(btn) {
         //obj为ajax请求数据
         //将展示的数据赋值给pager.data  (array)
-        $.getJSON("../Admin/ashx/GetCommentList.ashx", {}, function (value) {
-            pager.data = value.list;
+                $.getJSON("../layui/json/UsercommontList.json", {}, function (value) {
+            pager.data = value.data;
             var arr = [],str=" ";
             arr = pager.data.slice(pager.pageCount * pager.currentPage,
                 pager.data.length - pager.pageCount * (pager.currentPage + 1) > -1 ?
@@ -30,27 +30,27 @@
             arr.forEach(function (v) {
                 //
                 str += "<div style='margin-top:5px;'>"
-                    + "<span style='color:#2069b3;font-size:15px'>[匿名用户]: 发布于" + ConvertTime(v.LiuYanShiJian) + "</span>";
-                if (v.NeiRong.indexOf("@") != -1) {
-                    var jingdianmingcheng = "";
-                    var sss = v.NeiRong.substr(1);
-                    for (var i = 0; i < sss.length; i++) {
-                        if (sss.charAt(i) == '@') {
-                            break;
-                        }
-                        jingdianmingcheng += sss.charAt(i);
-                    }
-                    str += '<input style="margin: 0 0 0 10px;color:blue" type="button" name="dingwei" onclick="dingweijingdian(\'' + jingdianmingcheng + '\')" value="定位到" />';
-                }
+                    + "<span style='color:#2069b3;font-size:12px'>[" + v.Visitor+"]: 发布于" + v.SubTime + "</span>";
+                //if (v.NeiRong.indexOf("@") != -1) {
+                //    var jingdianmingcheng = "";
+                //    var sss = v.NeiRong.substr(1);
+                //    for (var i = 0; i < sss.length; i++) {
+                //        if (sss.charAt(i) == '@') {
+                //            break;
+                //        }
+                //        jingdianmingcheng += sss.charAt(i);
+                //    }
+                //    str += '<input style="margin: 0 0 0 10px;color:blue" type="button" name="dingwei" onclick="dingweijingdian(\'' + jingdianmingcheng + '\')" value="定位到" />';
+                //}
                     str+= "<br />"
-                    + "<span style='margin:0 0 0 10px;font-size:14px'>" + unescape(v.NeiRong) + "</span>"
+                        + "<span style='margin:0 0 0 10px;font-size:14px'>" + v.Comment + "</span>"
 
-                if (v.HuiFuNeiRong.length!=0) {
+                //if (v.HuiFuNeiRong.length!=0) {
 
-                    str += "<br />"
-                        + "管理员回复：<span style='font-size:13px'>" + v.HuiFuNeiRong + "</span>";
+                //    str += "<br />"
+                //        + "管理员回复：<span style='font-size:13px'>" + v.HuiFuNeiRong + "</span>";
                     
-                }
+                //}
             
 
                 str += "</div>";

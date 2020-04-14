@@ -654,6 +654,7 @@
     <Content Include="layui\src\font\iconfont.woff" />
     <Content Include="layui\src\font\iconfont.woff2" />
     <Content Include="layui\test\README.md" />
+    <Content Include="map\images\marker.png" />
     <Content Include="map\images\marker_red.png" />
     <Content Include="map\jsAPI\images\_desktop.ini" />
     <Content Include="map\jsAPI\_desktop.ini" />
@@ -899,7 +900,7 @@
     <Content Include="map\images\top_right.png" />
     <Content Include="map\index.html" />
     <Content Include="map\jsAPI\88358083858563918.jpg" />
-    <Content Include="map\jsAPI\comment_page.js" />
+    <Content Include="js\comment_page.js" />
     <Content Include="map\jsAPI\gkxx_page.js" />
     <Content Include="map\jsAPI\images\88358083858563918.jpg" />
     <Content Include="map\jsAPI\images\bd.png" />
@@ -928,7 +929,7 @@
     <Content Include="map\jsAPI\jquery\jquery-3.3.1.min.js" />
     <Content Include="map\jsAPI\jquery\jquery.min.1.9.0.js" />
     <Content Include="map\jsAPI\lygh_page.js" />
-    <Content Include="map\jsAPI\map.js" />
+    <Content Include="js\map.js" />
     <Content Include="map\jsAPI\mobile.css" />
     <Content Include="map\jsAPI\newmap.css" />
     <Content Include="map\jsAPI\newmap.ie.css" />
