@@ -1,0 +1,5 @@
+[6][2020-05-08 19:53:59,128][INFO ][Mr.G] Content:[TouristPlanning]-[GetALLTourismPlanning],÷¥––£∫90ms,‰÷»æ£∫8ms,[::1],[Chrome81]
+[6][2020-05-08 19:54:02,284][INFO ][Mr.G] Content:[PublicInformation]-[GetPubicInformation],÷¥––£∫33ms,‰÷»æ£∫0ms,[::1],[Chrome81]
+[6][2020-05-08 19:54:09,986][INFO ][Mr.G] Content:[TouristPlanning]-[GetTourismPlanning],÷¥––£∫7ms,‰÷»æ£∫0ms,[::1],[Chrome81]
+[6][2020-05-08 19:54:15,525][INFO ][Mr.G] Content:[TouristPlanning]-[GetALLTourismPlanning],÷¥––£∫2ms,‰÷»æ£∫0ms,[::1],[Chrome81]
+[6][2020-05-08 19:54:16,676][INFO ][Mr.G] Content:[PublicInformation]-[GetPubicInformation],÷¥––£∫1ms,‰÷»æ£∫0ms,[::1],[Chrome81]

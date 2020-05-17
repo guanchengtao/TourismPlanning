@@ -603,7 +603,9 @@
     <Content Include="js\timer.js" />
     <Content Include="js\top.js" />
     <Content Include="layui\Client\AttractionPlanningMap.html" />
+    <Content Include="layui\Client\form.html" />
     <Content Include="layui\Client\PlanningTimeLine.html" />
+    <Content Include="layui\Client\PlanningAddForm.html" />
     <Content Include="layui\Client\VisitorReviews.html" />
     <Content Include="layui\Client\TouristPlanningMap.html" />
     <Content Include="layui\Client\TouristPlanning.html" />
@@ -628,6 +630,7 @@
     <Content Include="layui\examples\extends\mod2.js" />
     <Content Include="layui\examples\extends\temp.js" />
     <Content Include="layui\examples\flow.html" />
+    <Content Include="layui\examples\Question.html" />
     <Content Include="layui\examples\form - 复制.html" />
     <Content Include="layui\Client\PublicInformationAddForm.html" />
     <Content Include="layui\examples\js\child\test.js" />
@@ -662,6 +665,7 @@
     <Content Include="layui\json\TouristAttractionListMap.json" />
     <Content Include="layui\json\TouristPlanningListMap.json" />
     <Content Include="layui\json\UsercommontList.json" />
+    <Content Include="layui\examples\Question.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="layui\dist\css\layui.css" />
     <Content Include="layui\dist\css\layui.mobile.css" />

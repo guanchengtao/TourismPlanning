@@ -1,0 +1,26 @@
+﻿{
+  "msg": "",
+  "code": 200,
+  "count": 3,
+  "data": [
+    {
+      "Id": 1,
+      "Question": "问题1",
+      "AnswerSelectList": ["A","B","C","D"],
+      "AnswerTestList": ["窗前明月光","疑是地上霜","举头望明月","低头思故乡"]
+
+    },
+    {
+      "Id": 2,
+      "Question": "问题2",
+      "AnswerSelectList": [ "A", "B", "C"],
+      "AnswerTestList": [ "窗前明月光", "疑是地上霜", "举头望明月" ]
+    },
+    {
+      "Id": 3,
+      "Question": "问题3",
+      "AnswerSelectList": [ "A", "B", "C", "D", "E"],
+      "AnswerTestList": [ "窗前明月光", "疑是地上霜", "举头望明月", "低头思故乡","我是郭德纲" ]
+    }
+  ]
+}
